@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Lobster&family=Rubik+Wet+Paint&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Lobster&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik+Wet+Paint&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -21,4 +21,12 @@
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
+}
+
+.roboto-font {
+  font-family: 'Roboto', serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
 }
