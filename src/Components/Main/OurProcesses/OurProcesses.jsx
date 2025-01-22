@@ -3,13 +3,13 @@ import SectionTitle from '../Title/SectionTitle';
 
 const OurProcesses = () => {
   return (
-    <div className="bg-gray-50 h-full lg:h-[500px] p-10">
+    <div className="bg-gray-100 h-full lg:h-[500px] p-10">
       <SectionTitle
         subTitle="Delivering the Highest Standards"
         mainTitle="Our Processes"
       ></SectionTitle>
 
-      <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4  md:gap-10 lg:gap-14">
+      <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-10 lg:gap-14">
         <div className="p-10 bg-white relative ">
           <h4 className="text-xl font-semibold mb-3">Initial Consultation</h4>
           <p className="text-gray-500">
