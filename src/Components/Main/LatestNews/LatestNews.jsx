@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../Title/SectionTitle';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const LatestNews = () => {
   const [Data, setData] = useState([]);
@@ -27,19 +28,21 @@ const LatestNews = () => {
         <div className="w-full lg:w-9/12   md:flex gap-5 md:gap-10 lg:gap-16">
           <div className="md:w-1/3  grid grid-cols-1 gap-10">
             {LatestThreeNews.map(threeNews => (
-              <div key={threeNews._id} className="">
-                <div className="h-[180px] w-full">
-                  <img
-                    className="w-full h-full rounded-md"
-                    src={threeNews.newsImage}
-                    alt="News Image"
-                  />
+              <Link to={`/NewsDetails/${threeNews._id}`}>
+                <div key={threeNews._id} className="">
+                  <div className="h-[180px] w-full">
+                    <img
+                      className="w-full h-full rounded-md"
+                      src={threeNews.newsImage}
+                      alt="News Image"
+                    />
+                  </div>
+                  <div className="mt-3 space-y-2">
+                    <h6 className=" font-bold">{threeNews.heading}</h6>
+                    <p>{threeNews.date}</p>
+                  </div>
                 </div>
-                <div className="mt-3 space-y-2">
-                  <h6 className=" font-bold">{threeNews.heading}</h6>
-                  <p>{threeNews.date}</p>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
 
@@ -77,9 +80,11 @@ const LatestNews = () => {
                       {ForeNews.subDescription}
                     </p>
 
-                    <button className="btn btn-outline btn-sm rounded-none uppercase mt-5">
-                      Read More
-                    </button>
+                    <Link to={`/NewsDetails/${ForeNews._id}`}>
+                      <button className="btn btn-outline btn-sm rounded-none uppercase mt-5">
+                        Read More
+                      </button>
+                    </Link>
                   </div>
                 </div>
               ))}
@@ -114,20 +119,24 @@ const LatestNews = () => {
 
           <div className="grid grid-cols-1 gap-5 md:gap-7">
             {Data.map(News => (
-              <div key={News._id} className="flex gap-5 h-[100px] border-b">
-                <div className="w-1/3 h-full">
-                  <img
-                    className="w-full h-full"
-                    src={News.newsImage}
-                    alt="News Image"
-                  />
+              <Link to={`/NewsDetails/${News._id}`}>
+                <div key={News._id} className="flex gap-5 h-[100px] border-b">
+                  <div className="w-1/3 h-full">
+                    <img
+                      className="w-full h-full"
+                      src={News.newsImage}
+                      alt="News Image"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1 w-2/3">
+                    <h6 className="text-sm font-bold">{News.heading}</h6>
+                    <small>{News.date}</small>
+                    <small className="text-gray-400">
+                      By {News.authorName}
+                    </small>
+                  </div>
                 </div>
-                <div className="flex flex-col gap-1 w-2/3">
-                  <h6 className="text-sm font-bold">{News.heading}</h6>
-                  <small>{News.date}</small>
-                  <small className="text-gray-400">By {News.authorName}</small>
-                </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
