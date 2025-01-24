@@ -5,9 +5,13 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import { auth } from '../../../Firebase.config/Firebase.config';
+import useAxionPublic from '../../../Axios/useAxionPublic';
+import axios from 'axios';
 
 const RegistrationPage = () => {
-  const { CreateUserEmailPassword } = useContext(AuthContext);
+  const PublicAxios = useAxionPublic();
+
+  const { CreateUserEmailPassword, CreateUserGoogle } = useContext(AuthContext);
   const [UserRole, setUserRole] = useState(null);
 
   const handleRegistrationFromSubmit = async e => {
@@ -52,6 +56,21 @@ const RegistrationPage = () => {
               .then(() => {
                 console.log(result.user);
                 console.log('Update Success');
+
+                const UserInfo = {
+                  Name: result.user?.displayName,
+                  Email: result.user?.email,
+                  Photo: result.user?.photoURL,
+                  UserRole: UserRole,
+                };
+
+                PublicAxios.post('/User', UserInfo)
+                  .then(res => {
+                    console.log(res.data);
+                  })
+                  .catch(error => {
+                    console.log(error.message);
+                  });
               })
               .catch(error => {
                 console.log('Profile Update Error:', error.message);
@@ -72,13 +91,38 @@ const RegistrationPage = () => {
     setUserRole(e.target.value);
   };
 
+  const handleGoogleRegistration = () => {
+    CreateUserGoogle()
+      .then(result => {
+        console.log(result.user);
+
+        const UserInfo = {
+          Name: result.user?.displayName,
+          Email: result.user?.email,
+          Photo: result.user?.photoURL,
+          UserRole: 'Employee',
+        };
+
+        PublicAxios.post('/User', UserInfo)
+          .then(res => {
+            console.log(res.data);
+          })
+          .catch(error => {
+            console.log(error.message);
+          });
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="py-20">
       <h4 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold mt-5 ">
         Registration a New Account
       </h4>
 
-      <div className="w-11/12 md:w-10/12 mx-auto md:flex items-center gap-10 ">
+      <div className="w-11/12 md:w-10/12 mx-auto md:flex items-center gap-5">
         <div className="card w-full md:w-1/2">
           <form onSubmit={handleRegistrationFromSubmit} className="card-body">
             <div className="form-control">
@@ -172,7 +216,10 @@ const RegistrationPage = () => {
           <div className="divider ">Or</div>
 
           <div className="card-body">
-            <button className="w-full btn bg-cyan-400 text-white">
+            <button
+              onClick={handleGoogleRegistration}
+              className="w-full btn bg-cyan-400 text-white"
+            >
               <i class="fa-brands fa-google fa-bounce fa-xl"></i>Registration
               with Google
             </button>

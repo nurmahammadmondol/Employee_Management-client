@@ -1,9 +1,38 @@
 import Lottie from 'lottie-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import LottieFileLogin from '../../../../assets/LottieFile/Animation -Login (2).json';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../../Provider/AuthProvider';
 
 const LoginPage = () => {
+  const { CreateUserGoogle, LoginWithEmailPassword } = useContext(AuthContext);
+
+  const handleLoginFormSubmit = e => {
+    e.preventDefault();
+
+    const form = e.target;
+    const Email = form.email.value;
+    const Password = form.password.value;
+
+    LoginWithEmailPassword(Email, Password)
+      .then(result => {
+        console.log(result.user);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    CreateUserGoogle()
+      .then(result => {
+        console.log(result.user);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="py-20">
       <h4 className="text-center text-2xl md:text-3xl lg:text-4xl font-bold my-5 ">
@@ -13,7 +42,7 @@ const LoginPage = () => {
       <div className="w-11/12 md:w-10/12 mx-auto md:flex items-center md:gap-10 lg:gap-16 ">
         <div className="w-full md:w-1/2">
           <div className="card w-full">
-            <form className="card-body">
+            <form onSubmit={handleLoginFormSubmit} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -39,18 +68,6 @@ const LoginPage = () => {
                   required
                 />
 
-                {/* <div className="absolute right-3 bottom-11">
-                {passwordShow ? (
-                  <small>
-                    <i class="fa-solid fa-eye-slash"></i>
-                  </small>
-                ) : (
-                  <small >
-                    <i class="fa-solid fa-eye"></i>
-                  </small>
-                )}
-              </div> */}
-
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
@@ -65,7 +82,10 @@ const LoginPage = () => {
             <div className="divider ">Or</div>
 
             <div className="card-body">
-              <button className="w-full btn bg-cyan-400 text-white">
+              <button
+                onClick={handleGoogleLogin}
+                className="w-full btn bg-cyan-400 text-white"
+              >
                 <i class="fa-brands fa-google fa-bounce fa-xl"></i>Login with
                 Google
               </button>
