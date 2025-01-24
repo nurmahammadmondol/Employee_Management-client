@@ -3,6 +3,7 @@ import Banner from '../Header/Banner';
 import Statistical from '../Main/StatisticalSection/Statistical';
 import OurProcesses from '../Main/OurProcesses/OurProcesses';
 import LatestNews from '../Main/LatestNews/LatestNews';
+import OurExpertise from '../Main/OurExpertise/OurExpertise';
 
 const HomePageContain = () => {
   return (
@@ -18,6 +19,10 @@ const HomePageContain = () => {
 
       <div className="  my-20">
         <OurProcesses></OurProcesses>
+      </div>
+
+      <div>
+        <OurExpertise></OurExpertise>
       </div>
     </div>
   );

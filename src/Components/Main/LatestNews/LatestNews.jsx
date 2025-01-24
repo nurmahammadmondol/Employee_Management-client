@@ -29,7 +29,7 @@ const LatestNews = () => {
           <div className="md:w-1/3  grid grid-cols-1 gap-10">
             {LatestThreeNews.map(threeNews => (
               <Link to={`/NewsDetails/${threeNews._id}`}>
-                <div key={threeNews._id} className="">
+                <div key={threeNews._id}>
                   <div className="h-[180px] w-full">
                     <img
                       className="w-full h-full rounded-md"

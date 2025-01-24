@@ -3,6 +3,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import HomePage from '../Components/Home/HomePage';
 import HomePageContain from '../Components/Home/HomePageContain';
 import NewsDetails from '../Components/Main/LatestNews/NewsDetails';
+import LoginPage from '../Components/Main/Authentication/Login/LoginPage';
+import RegistrationPage from '../Components/Main/Authentication/Registration/RegistrationPage';
 
 const Router = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ const Router = createBrowserRouter([
         element: <NewsDetails></NewsDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/latest-news/${params.id}`),
+      },
+      {
+        path: '/LoginPage',
+        element: <LoginPage></LoginPage>,
+      },
+      {
+        path: '/RegistrationPage',
+        element: <RegistrationPage></RegistrationPage>,
       },
     ],
   },
