@@ -3,8 +3,10 @@ import React, { useContext } from 'react';
 import LottieFileLogin from '../../../../assets/LottieFile/Animation -Login (2).json';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../Provider/AuthProvider';
+import useAxionPublic from '../../../Axios/useAxionPublic';
 
 const LoginPage = () => {
+  const PublicAxios = useAxionPublic();
   const { CreateUserGoogle, LoginWithEmailPassword } = useContext(AuthContext);
 
   const handleLoginFormSubmit = e => {
@@ -27,6 +29,21 @@ const LoginPage = () => {
     CreateUserGoogle()
       .then(result => {
         console.log(result.user);
+
+        const UserInfo = {
+          Name: result.user?.displayName,
+          Email: result.user?.email,
+          Photo: result.user?.photoURL,
+          UserRole: 'Employee',
+        };
+
+        PublicAxios.post('/User', UserInfo)
+          .then(res => {
+            console.log(res.data);
+          })
+          .catch(error => {
+            console.log(error.message);
+          });
       })
       .catch(error => {
         console.log(error.message);

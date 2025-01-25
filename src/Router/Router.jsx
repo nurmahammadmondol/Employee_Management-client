@@ -5,6 +5,7 @@ import HomePageContain from '../Components/Home/HomePageContain';
 import NewsDetails from '../Components/Main/LatestNews/NewsDetails';
 import LoginPage from '../Components/Main/Authentication/Login/LoginPage';
 import RegistrationPage from '../Components/Main/Authentication/Registration/RegistrationPage';
+import RoutesForEmployees from '../Components/Main/Dashboard/ForEmployee/RoutesForEmployees';
 
 const Router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const Router = createBrowserRouter([
       {
         path: '/',
         element: <HomePageContain></HomePageContain>,
+      },
+      {
+        path: '/DashboardEmployes',
+        element: <RoutesForEmployees></RoutesForEmployees>,
       },
       {
         path: '/NewsDetails/:id',
