@@ -4,6 +4,7 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../Components/Firebase.config/Firebase.config';
@@ -27,6 +28,10 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, Email, Password);
   };
 
+  const LogOutUser = () => {
+    return signOut(auth);
+  };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, carrentUser => {
       setUser(carrentUser);
@@ -43,6 +48,7 @@ const AuthProvider = ({ children }) => {
     CreateUserEmailPassword,
     CreateUserGoogle,
     LoginWithEmailPassword,
+    LogOutUser,
     User,
     loading,
   };

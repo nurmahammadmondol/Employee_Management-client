@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import EmployeWorkSheet from './EmployeWorkSheet';
 import EmployeePaymentHistory from './EmployeePaymentHistory';
+import { AuthContext } from '../../../../Provider/AuthProvider';
 
 const RoutesForEmployees = () => {
+  const { User } = useContext(AuthContext);
+
   return (
     <div className="py-24 md:py-32 w-11/12 mx-auto">
       <h4 className="my-5 text-xl md:text-2xl  font-bold roboto-font">
-        Nur Mohammad Mondal Rabiul, welcome back are you ready for the next
-        task?
+        {User
+          ? `${User?.displayName}, welcome back are you ready for the next task`
+          : `welcome back are you ready for the next task`}
       </h4>
 
       <Tabs>

@@ -21,6 +21,7 @@ const RegistrationPage = () => {
     const Name = form.name.value;
     const Email = form.email.value;
     const Password = form.password.value;
+    const BankAccount = form.bankAccount.value;
     const PhotoFile = form.photo.files[0]; // ফাইলটি সঠিকভাবে নেওয়া হচ্ছে।
 
     // ImageBB API Key
@@ -62,6 +63,7 @@ const RegistrationPage = () => {
                   Email: result.user?.email,
                   Photo: result.user?.photoURL,
                   UserRole: UserRole,
+                  BankAccount: BankAccount,
                 };
 
                 PublicAxios.post('/User', UserInfo)
@@ -174,6 +176,7 @@ const RegistrationPage = () => {
                 onChange={handleUserRole}
                 value={UserRole}
                 className="select select-bordered w-full"
+                required
               >
                 <option disabled selected>
                   The role of users will be...
@@ -181,6 +184,19 @@ const RegistrationPage = () => {
                 <option value="Employee">Employee</option>
                 <option value="HR">HR</option>
               </select>
+            </div>
+
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Bank Account No</span>
+              </label>
+              <input
+                type="text"
+                name="bankAccount"
+                placeholder="Account Number"
+                className="border p-2 rounded"
+                required
+              />
             </div>
 
             <div className="form-control">
