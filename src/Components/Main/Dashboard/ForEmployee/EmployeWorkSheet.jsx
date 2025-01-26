@@ -6,6 +6,7 @@ import { AuthContext } from '../../../../Provider/AuthProvider';
 import useAxiosSecuur from '../../../Axios/useAxiosSecuur';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const EmployeWorkSheet = () => {
   const { User } = useContext(AuthContext);
@@ -71,11 +72,35 @@ const EmployeWorkSheet = () => {
     setTasks(e.target.value);
   };
 
-  const [updateItem, setUpdateItem] = useState(null);
+  const [editItem, setEditItem] = useState(null);
 
-  const handleUpdateTasks = Item => {
+  const handleEditButtonOpen = Item => {
+    setEditItem(Item);
     document.getElementById('my_modal_4').showModal();
-    setUpdateItem(Item);
+  };
+
+  const handleUpdateTasks = (e, ID) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const WorkingTime = form.EditWorkingTime.value;
+    const Tarks = form.Tasks.value;
+
+    const UpdateData = { tasks: Tarks, WorkingTime, startDate };
+    console.log(ID);
+    console.log(UpdateData);
+    AxiosSecuur.patch(`/WorkSheet/${ID}`, UpdateData)
+      .then(res => {
+        console.log(res.data);
+        refetch();
+        // setIsModalOpen(false);
+        if (res.data.modifiedCount > 0) {
+          document.getElementById('my_modal_4').close();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   const handleDeleteTasks = ID => {
@@ -126,7 +151,7 @@ const EmployeWorkSheet = () => {
                 className="border rounded w-full p-2 flex-grow"
                 required
               >
-                <option disabled selected>
+                <option disabled selected value="">
                   Tasks
                 </option>
                 <option value="Sales">Sales</option>
@@ -186,7 +211,7 @@ const EmployeWorkSheet = () => {
                       <td>{item?.WorkingTime} hours</td>
                       <td>{item?.startDate}</td>
                       <td className="md:flex justify-center items-center gap-4">
-                        <button onClick={() => handleUpdateTasks(item)}>
+                        <button onClick={() => handleEditButtonOpen(item)}>
                           <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                         <button onClick={() => handleDeleteTasks(item?._id)}>
@@ -210,16 +235,78 @@ const EmployeWorkSheet = () => {
               {/* You can open the modal using document.getElementById('ID').showModal() method */}
             </table>
           </div>
-          <dialog id="my_modal_4" className="modal">
-            <div className="modal-box w-11/12 max-w-5xl">
-              <h3 className="font-bold text-lg">Hello! {updateItem?.tasks}</h3>
-              <p className="py-4">Click the button below to close</p>
+
+          <dialog
+            id="my_modal_4"
+            className="modal flex justify-center items-center"
+          >
+            <div className="modal-box w-11/12 py-28 max-w-5xl flex flex-col items-center justify-center">
+              <h3 className="font-bold text-lg">Update this Tasks</h3>
+
               <div className="modal-action">
-                <form method="dialog">
-                  {/* if there is a button, it will close the modal */}
-                  <button className="btn">Close</button>
+                <form
+                  onSubmit={e =>
+                    handleUpdateTasks(e, editItem._id, editItem?.tasks)
+                  }
+                  className=" bg-white p-4 rounded grid grid-cols-1 md:grid-cols-2 items-center gap-5"
+                >
+                  <div className="w-full">
+                    <label>Tasks :</label>
+                    <select
+                      onChange={handleTasks}
+                      value={tasks || editItem?.tasks}
+                      defaultValue={editItem?.tasks}
+                      name="Tasks"
+                      className="border rounded w-full p-2"
+                      required
+                    >
+                      <option disabled value="">
+                        Tasks
+                      </option>
+                      <option value="Sales">Sales</option>
+                      <option value="Support">Support</option>
+                      <option value="Content">Content</option>
+                      <option value="Paper-work">Paper-work</option>
+                    </select>
+                  </div>
+
+                  <div className="w-full">
+                    <label>Working Time :</label>
+                    <input
+                      type="number"
+                      name="EditWorkingTime"
+                      required
+                      defaultValue={editItem?.WorkingTime}
+                      // onChange={e => setWorkingTime(e.target.value)}
+                      placeholder="Hours Worked"
+                      className="border rounded p-2 w-full"
+                    />
+                  </div>
+
+                  <div className="w-full">
+                    <DatePicker
+                      showIcon
+                      selected={startDate}
+                      onChange={date => setStartDate(date)}
+                      className="border p-3 w-full rounded"
+                      // popperPlacement="right-start"
+                    />
+                  </div>
+
+                  <div className="w-full">
+                    <button className="bg-cyan-300 btn btn-sm w-full  text-white py-2 px-5 md:px-10 rounded hover:bg-cyan-500 transition">
+                      Update
+                    </button>
+                  </div>
                 </form>
               </div>
+              <form method="dialog">
+                <div className="flex items-center gap-5 mt-5">
+                  <button className="text-cyan-300 btn btn-sm btn-outline py-2 px-5 md:px-10 rounded hover:bg-cyan-500 transition">
+                    Back
+                  </button>
+                </div>
+              </form>
             </div>
           </dialog>
         </div>
