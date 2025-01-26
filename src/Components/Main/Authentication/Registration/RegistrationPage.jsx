@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react';
 import Lottie from 'lottie-react';
 import LottieFileRegistration from '../../../../assets/LottieFile/Animation -Registration.json';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import { auth } from '../../../Firebase.config/Firebase.config';
 import useAxionPublic from '../../../Axios/useAxionPublic';
-import axios from 'axios';
 
 const RegistrationPage = () => {
   const PublicAxios = useAxionPublic();
+  const navigate = useNavigate();
 
   const { CreateUserEmailPassword, CreateUserGoogle } = useContext(AuthContext);
   const [UserRole, setUserRole] = useState(null);
@@ -69,6 +69,7 @@ const RegistrationPage = () => {
                 PublicAxios.post('/User', UserInfo)
                   .then(res => {
                     console.log(res.data);
+                    navigate('/');
                   })
                   .catch(error => {
                     console.log(error.message);

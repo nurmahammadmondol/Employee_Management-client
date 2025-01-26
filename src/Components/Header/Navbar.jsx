@@ -3,11 +3,18 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 
 const Navbar = () => {
-  const { User, LogOutUser } = useContext(AuthContext);
+  const { User, userData, LogOutUser } = useContext(AuthContext);
   const Links = (
     <div className="  md:text-xl font-bold flex items-center gap-4 md:gap-7">
       <NavLink>Home</NavLink>
-      <NavLink to="/DashboardEmployes">Dashboard </NavLink>
+      {/* <NavLink to="">Dashboard </NavLink> */}
+      {User && userData.UserRole === 'Employee' && (
+        <NavLink to="/DashboardEmployes">Dashboard </NavLink>
+      )}
+      {User && userData.UserRole === 'HR' && (
+        <NavLink to="/DashboardHR">Dashboard </NavLink>
+      )}
+
       <NavLink>About</NavLink>
       <NavLink>ContactUs</NavLink>
     </div>

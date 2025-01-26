@@ -93,7 +93,7 @@ const EmployeWorkSheet = () => {
       .then(res => {
         console.log(res.data);
         refetch();
-        // setIsModalOpen(false);
+
         if (res.data.modifiedCount > 0) {
           document.getElementById('my_modal_4').close();
         }
@@ -206,7 +206,10 @@ const EmployeWorkSheet = () => {
               {User && FilterEmployeeWorkSheet.length > 0 ? (
                 <tbody>
                   {FilterEmployeeWorkSheet.map(item => (
-                    <tr key={item._id} className=" text-center">
+                    <tr
+                      key={item._id}
+                      className=" text-center hover:bg-gray-100"
+                    >
                       <td>{item?.tasks}</td>
                       <td>{item?.WorkingTime} hours</td>
                       <td>{item?.startDate}</td>
@@ -236,6 +239,7 @@ const EmployeWorkSheet = () => {
             </table>
           </div>
 
+          {/* work sheet Modal */}
           <dialog
             id="my_modal_4"
             className="modal flex justify-center items-center"
