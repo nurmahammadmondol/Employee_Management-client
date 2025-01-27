@@ -89,7 +89,7 @@ const WorkRecords = () => {
         </div>
       </div>
 
-      <div className="w-full">
+      <div className="w-full overflow-x-auto">
         <table className="table border overflow-x-auto">
           {/* Table Header */}
           <thead className="bg-gray-200 border-gray-300">

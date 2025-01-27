@@ -3,7 +3,7 @@ import React from 'react';
 const EmployeePaymentHistory = () => {
   return (
     <div>
-      <h5 className="text-center font-bold mb-5 lobster-regular-font uppercase text-lg ">
+      <h5 className="text-center font-bold mb-5 text-gray-400  text-lg ">
         Your monthly salary payment history
       </h5>
 

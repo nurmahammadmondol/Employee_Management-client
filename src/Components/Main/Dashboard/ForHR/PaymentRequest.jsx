@@ -9,11 +9,11 @@ const PaymentRequest = () => {
   return (
     <div>
       <h5 className="text-center text-2xl font-semibold mb-5 lobster-regular-font">
-        Payment Request
+        All Payment Request
       </h5>
 
       <div className="w-full">
-        <div className="">
+        <div className="overflow-x-auto">
           <table className="table border">
             {/* head */}
             <thead className="bg-gray-200 border-gray-300">

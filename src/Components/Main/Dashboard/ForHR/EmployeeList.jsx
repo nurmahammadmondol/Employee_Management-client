@@ -148,7 +148,7 @@ const EmployeeList = () => {
           <Link to={`/DashboardHR/EmplayeDetails/${row.original.id}`}>
             <button
               onClick={() => handleEmplayeeDetailss(row.original.id)}
-              className="btn btn-sm"
+              className="btn btn-sm flex items-center gap-2 text-xs md:text-sm"
             >
               <i class="fa-solid fa-circle-info"></i>
               Details
@@ -178,45 +178,47 @@ const EmployeeList = () => {
   });
 
   return (
-    <div className="p-4 w-full ">
+    <div className="w-full ">
       <h5 className="text-center text-2xl font-semibold mb-5 lobster-regular-font">
         Employee List
       </h5>
-      <table className="w-full border-collapse border border-gray-300  ">
-        <thead>
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map(header => (
-                <th
-                  key={header.id}
-                  className="border border-gray-300 p-2 bg-gray-200"
-                >
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map(row => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map(cell => (
-                <td
-                  key={cell.id}
-                  className="border border-gray-300 p-2 text-center"
-                >
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse border border-gray-300  ">
+          <thead>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map(header => (
+                  <th
+                    key={header.id}
+                    className="border border-gray-300 p-2 bg-gray-200"
+                  >
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map(row => (
+              <tr key={row.id}>
+                {row.getVisibleCells().map(cell => (
+                  <td
+                    key={cell.id}
+                    className="border border-gray-300 p-2 text-center"
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

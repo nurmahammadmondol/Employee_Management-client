@@ -54,24 +54,26 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{Links}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end flex gap-2 items-center">
         <div>
           <img className="w-12 h-12 rounded-full" src={User?.photoURL} alt="" />
         </div>
-        {User ? (
-          <button
-            onClick={LogOutUser}
-            className="btn  text-xl btn-outline text-white"
-          >
-            Log out
-          </button>
-        ) : (
-          <Link to="/LoginPage">
-            <button className="btn  text-xl btn-outline text-white">
-              Login
+        <div>
+          {User ? (
+            <button
+              onClick={LogOutUser}
+              className="btn  text-xl btn-outline text-white"
+            >
+              Log out
             </button>
-          </Link>
-        )}
+          ) : (
+            <Link to="/LoginPage">
+              <button className="btn  text-xl btn-outline text-white">
+                Login
+              </button>
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );

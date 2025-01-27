@@ -191,7 +191,7 @@ const EmployeWorkSheet = () => {
 
         <div className="w-full md:w-2/3 border mt-10 md:mt-0">
           {/* Table */}
-          <div>
+          <div className="overflow-x-auto">
             <table className="w-full table overflow-x-auto bg-white rounded ">
               <thead>
                 <tr className="bg-gray-200 text-center">

@@ -10,11 +10,11 @@ const RoutesForEmployees = () => {
 
   return (
     <div className="py-24 md:py-32 w-11/12 mx-auto">
-      <div className="my-5 text-xl md:text-2xl lg:text-3xl  font-bold roboto-font">
+      <div className="my-5 text-xl md:text-2xl lg:text-3xl  font-bold lobster-regular-font ">
         {User ? (
           <h4>
             <span className="text-cyan-300">{User?.displayName},</span> welcome
-            back are you ready for the next task
+            back are you ready for the next task ?
           </h4>
         ) : (
           `welcome back are you ready for the next task`
