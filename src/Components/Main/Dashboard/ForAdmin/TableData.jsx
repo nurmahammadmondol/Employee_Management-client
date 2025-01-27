@@ -1,33 +1,6 @@
-import React, { useEffect } from 'react';
-import useAxiosSecuur from '../../../Axios/useAxiosSecuur';
-import { useQuery } from '@tanstack/react-query';
+import React from 'react';
 
-const TableData = () => {
-  const AxiosSeccur = useAxiosSecuur();
-
-  const {
-    isPending,
-    error,
-    data: employees = [],
-  } = useQuery({
-    queryKey: ['User'],
-    queryFn: () =>
-      AxiosSeccur.get('/User').then(res => {
-        // console.log(res.data);
-        return res.data;
-      }),
-  });
-
-  const makeHR = ID => {
-    console.log(ID);
-  };
-  const fireEmployee = ID => {
-    console.log(ID);
-  };
-  const adjustSalary = ID => {
-    console.log(ID);
-  };
-
+const TableData = ({ employees, makeHR, fireEmployee, adjustSalary }) => {
   return (
     <div className="overflow-x-auto">
       <table className="table-auto w-full border-collapse border border-gray-300 mt-5">
@@ -62,30 +35,45 @@ const TableData = () => {
               <td className="border border-gray-300 px-4 py-2 text-center">
                 {employee?.UserRole !== 'HR' ? (
                   <button
-                    className="text-blue-400 hover:underline"
+                    className={`text-blue-400 hover:underline ${
+                      employee.dismiss &&
+                      'opacity-50 text-red-500 pointer-events-none cursor-not-allowed'
+                    }`}
                     onClick={() => makeHR(employee._id)}
                   >
                     Make HR
                   </button>
                 ) : (
-                  <span className="text-green-500 font-bold">HR</span>
+                  <span
+                    className={`text-green-500 font-bold  ${
+                      employee.dismiss &&
+                      'opacity-50 text-red-500 font-mono pointer-events-none cursor-not-allowed'
+                    }`}
+                  >
+                    HR
+                  </span>
                 )}
               </td>
+
               <td className="border border-gray-300 px-4 py-2 text-center">
-                {employee.fired ? (
-                  <span className="text-red-500">Fired</span>
+                {employee.dismiss ? (
+                  <span className="text-red-300">Dismiss</span>
                 ) : (
                   <button
-                    className="text-red-500 hover:underline"
-                    onClick={() => fireEmployee(employee?._id)}
+                    className="text-blue-400 hover:underline"
+                    onClick={() => fireEmployee(employee)}
                   >
-                    Fire
+                    Fired
                   </button>
                 )}
               </td>
+
               <td className="border border-gray-300 px-4 py-2 text-center">
                 <button
-                  className="bg-green-400 text-white px-3 py-1 rounded"
+                  className={`bg-green-400 text-white px-3 py-1 rounded   ${
+                    employee.dismiss &&
+                    'opacity-50 bg-red-300 pointer-events-none cursor-not-allowed'
+                  }`}
                   onClick={() => adjustSalary(employee._id)}
                 >
                   Adjust Salary

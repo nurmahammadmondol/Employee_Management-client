@@ -1,32 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import useAxiosSecuur from '../../../Axios/useAxiosSecuur';
 
-const TableJustHR = () => {
-  const AxiosSeccur = useAxiosSecuur();
-
-  const {
-    isPending,
-    error,
-    data: employees = [],
-  } = useQuery({
-    queryKey: ['User'],
-    queryFn: () =>
-      AxiosSeccur.get('/User').then(res => {
-        // console.log(res.data);
-        const FilterHRData = res.data.filter(data => data.UserRole == 'HR');
-        // console.log(FilterHRData);
-        return FilterHRData;
-      }),
-  });
-
-  const fireEmployee = ID => {
-    console.log(ID);
-  };
-  const adjustSalary = ID => {
-    console.log(ID);
-  };
-
+const TableJustHR = ({ HrData, fireEmployee, adjustSalary }) => {
   return (
     <div className="overflow-x-auto">
       <table className="table-auto w-full border-collapse border border-gray-300 mt-5">
@@ -41,7 +15,7 @@ const TableJustHR = () => {
           </tr>
         </thead>
         <tbody>
-          {employees.map((employee, index) => (
+          {HrData.map((employee, index) => (
             <tr key={employee.id} className="hover:bg-gray-50">
               <td className="border border-gray-300 py-2 text-center">
                 {index + 1}
@@ -54,20 +28,24 @@ const TableJustHR = () => {
               </td>
 
               <td className="border border-gray-300 px-4 py-2 text-center">
-                {employee.fired ? (
-                  <span className="text-red-500">Fired</span>
+                {employee.dismiss ? (
+                  <span className="text-red-300">Dismiss</span>
                 ) : (
                   <button
-                    className="text-red-500 hover:underline"
-                    onClick={() => fireEmployee(employee?._id)}
+                    className="text-blue-400 hover:underline"
+                    onClick={() => fireEmployee(employee)}
                   >
-                    Fire
+                    Fired
                   </button>
                 )}
               </td>
+
               <td className="border border-gray-300 px-4 py-2 text-center">
                 <button
-                  className="bg-green-400 text-white px-3 py-1 rounded"
+                  className={`bg-green-400 text-white px-3 py-1 rounded   ${
+                    employee.dismiss &&
+                    'opacity-50 bg-red-300 pointer-events-none cursor-not-allowed'
+                  }`}
                   onClick={() => adjustSalary(employee._id)}
                 >
                   Adjust Salary

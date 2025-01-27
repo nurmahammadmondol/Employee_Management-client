@@ -39,7 +39,7 @@ const EmployeeList = () => {
         const salary = document.getElementById('salary').value;
         const date = document.getElementById('date').value;
 
-        const Data = { salary, date, ID };
+        // const Data = { salary, date, ID };
 
         const { id, name, email, photo, isVerified, bankAccount } = ID;
 
@@ -51,8 +51,8 @@ const EmployeeList = () => {
           isVerified,
           bankAccount,
           request: false,
-          salary: [salary], // অ্যারে হিসেবে সংরক্ষণ
-          date: [date], // অ্যারে হিসেবে সংরক্ষণ
+          salary: salary,
+          date: date,
         };
 
         // ইনপুট চেক করা
