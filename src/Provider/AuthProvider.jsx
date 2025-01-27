@@ -23,13 +23,13 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     AxiosSecuur.get('/User')
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         setAllUser(res.data);
 
         const userData = res.data;
         const userDataFind = userData.find(data => data?.Email === User?.email);
 
-        console.log(userDataFind);
+        // console.log(userDataFind);
 
         if (userDataFind) {
           setUserData(userDataFind);

@@ -5,10 +5,88 @@ import {
   flexRender,
 } from '@tanstack/react-table';
 import { AuthContext } from '../../../../Provider/AuthProvider';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAxiosSecuur from '../../../Axios/useAxiosSecuur';
 
 const EmployeeList = () => {
   const { AllUser } = useContext(AuthContext); // Fetching all user data from context
+  const AxiosSeccur = useAxiosSecuur();
   const [data, setData] = useState([]);
+
+  const handleSelaryPay = ID => {
+    console.log('pay success', ID);
+    Swal.fire({
+      title: 'Payment Request',
+      text: "Provide the details for the employee's payment request.",
+      icon: 'question',
+      html: `
+    <div>
+      <label for="salary" style="display: block; margin-bottom: 5px;">Salary:</label>
+      <input id="salary" type="number" placeholder="Enter salary" class="swal2-input" />
+
+      <label for="date" style="display: block; margin-top: 15px; margin-bottom: 5px;">Select Month and Year:</label>
+      <input id="date" type="month" class="swal2-input" />
+    </div>
+  `,
+      showCancelButton: true,
+      confirmButtonColor: '#49e1f1',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Send Request',
+    }).then(result => {
+      if (result.isConfirmed) {
+        // ইনপুট মান সংগ্রহ করা
+        const salary = document.getElementById('salary').value;
+        const date = document.getElementById('date').value;
+
+        const Data = { salary, date, ID };
+
+        const { id, name, email, photo, isVerified, bankAccount } = ID;
+
+        const Payment_RequestUser = {
+          id,
+          name,
+          email,
+          photo,
+          isVerified,
+          bankAccount,
+          request: false,
+          salary: [salary], // অ্যারে হিসেবে সংরক্ষণ
+          date: [date], // অ্যারে হিসেবে সংরক্ষণ
+        };
+
+        // ইনপুট চেক করা
+        if (salary && date) {
+          AxiosSeccur.post('/Payment_Request', Payment_RequestUser)
+            .then(res => {
+              console.log(res.data);
+              if (res.data.insertedId) {
+                Swal.fire({
+                  title: 'Request Sent!',
+                  text: `Salary: ${salary}, Date: ${date}`,
+                  icon: 'success',
+                  confirmButtonText: 'Done',
+                  confirmButtonColor: '#49e1f1',
+                });
+              }
+            })
+            .catch(error => {
+              console.log(error.messsage);
+            });
+        } else {
+          Swal.fire({
+            title: 'Error!',
+            text: 'Please fill out all fields before submitting.',
+            icon: 'error',
+            confirmButtonColor: '#b6f3f9',
+          });
+        }
+      }
+    });
+  };
+  const handleEmplayeeDetailss = ID => {
+    console.log('Details success open', ID);
+  };
 
   // Sync data from AuthContext and filter Employee roles
   useEffect(() => {
@@ -66,16 +144,29 @@ const EmployeeList = () => {
     {
       header: 'Actions',
       cell: ({ row }) => (
-        <button
-          className={`px-3 py-1 rounded ${
-            row.original.isVerified
-              ? 'bg-green-500 text-white'
-              : 'bg-gray-300 text-gray-600'
-          }`}
-          disabled={!row.original.isVerified}
-        >
-          Pay
-        </button>
+        <div className="flex gap-2 items-center justify-center">
+          <Link to={`/DashboardHR/EmplayeDetails/${row.original.id}`}>
+            <button
+              onClick={() => handleEmplayeeDetailss(row.original.id)}
+              className="btn btn-sm"
+            >
+              <i class="fa-solid fa-circle-info"></i>
+              Details
+            </button>
+          </Link>
+
+          <button
+            onClick={() => handleSelaryPay(row.original)}
+            className={`px-3 py-1 rounded flex items-center gap-2 ${
+              row.original.isVerified
+                ? 'bg-green-500 text-white'
+                : 'bg-gray-300 text-gray-600'
+            }`}
+            disabled={!row.original.isVerified}
+          >
+            <i class="fa-solid fa-money-check-dollar"></i>Pay
+          </button>
+        </div>
       ),
     },
   ];
@@ -87,11 +178,11 @@ const EmployeeList = () => {
   });
 
   return (
-    <div className="p-4">
+    <div className="p-4 w-full ">
       <h5 className="text-center text-2xl font-semibold mb-5 lobster-regular-font">
         Employee List
       </h5>
-      <table className="w-full border-collapse border border-gray-300">
+      <table className="w-full border-collapse border border-gray-300  ">
         <thead>
           {table.getHeaderGroups().map(headerGroup => (
             <tr key={headerGroup.id}>

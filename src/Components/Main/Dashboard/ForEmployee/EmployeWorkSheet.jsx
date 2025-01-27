@@ -6,7 +6,6 @@ import { AuthContext } from '../../../../Provider/AuthProvider';
 import useAxiosSecuur from '../../../Axios/useAxiosSecuur';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
-import axios from 'axios';
 
 const EmployeWorkSheet = () => {
   const { User } = useContext(AuthContext);

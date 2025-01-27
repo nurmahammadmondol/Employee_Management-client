@@ -11,6 +11,8 @@ import RoutersForHR from '../Components/Main/Dashboard/ForHR/RoutersForHR';
 import HomeHR from '../Components/Main/Dashboard/ForHR/HomeHR';
 import EmployeeList from '../Components/Main/Dashboard/ForHR/EmployeeList';
 import PaymentRequest from '../Components/Main/Dashboard/ForHR/PaymentRequest';
+import EmployeDetails from '../Components/Main/Dashboard/ForHR/EmployeDetails';
+import WorkRecords from '../Components/Main/Dashboard/ForHR/WorkRecords';
 
 const Router = createBrowserRouter([
   {
@@ -51,8 +53,20 @@ const Router = createBrowserRouter([
             element: <EmployeeList></EmployeeList>,
           },
           {
+            path: 'WorkRecords',
+            element: <WorkRecords></WorkRecords>,
+            loader: () => fetch('http://localhost:3000/WorkSheet'),
+          },
+          {
             path: 'PaymentRequest',
             element: <PaymentRequest></PaymentRequest>,
+            loader: () => fetch('http://localhost:3000/Payment_Request'),
+          },
+          {
+            path: 'EmplayeDetails/:id',
+            element: <EmployeDetails></EmployeDetails>,
+            loader: ({ params }) =>
+              fetch(`http://localhost:3000/User/${params.id}`),
           },
         ],
       },
