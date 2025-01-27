@@ -14,6 +14,9 @@ const Navbar = () => {
       {User && userData.UserRole === 'HR' && (
         <NavLink to="/DashboardHR">Dashboard </NavLink>
       )}
+      {User && userData.UserRole === 'Admin' && (
+        <NavLink to="/DashboardAdmin">Dashboard</NavLink>
+      )}
 
       <NavLink>About</NavLink>
       <NavLink>ContactUs</NavLink>
@@ -56,7 +59,13 @@ const Navbar = () => {
       </div>
       <div className="navbar-end flex gap-2 items-center">
         <div>
-          <img className="w-12 h-12 rounded-full" src={User?.photoURL} alt="" />
+          {User && (
+            <img
+              className="w-12 h-12 rounded-full"
+              src={User?.photoURL}
+              alt=""
+            />
+          )}
         </div>
         <div>
           {User ? (

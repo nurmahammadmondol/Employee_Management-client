@@ -13,6 +13,10 @@ import EmployeeList from '../Components/Main/Dashboard/ForHR/EmployeeList';
 import PaymentRequest from '../Components/Main/Dashboard/ForHR/PaymentRequest';
 import EmployeDetails from '../Components/Main/Dashboard/ForHR/EmployeDetails';
 import WorkRecords from '../Components/Main/Dashboard/ForHR/WorkRecords';
+import RouterForAdmin from '../Components/Main/Dashboard/ForAdmin/RoutersForAdmin/RouterForAdmin';
+import AllEmployeeList from '../Components/Main/Dashboard/ForAdmin/AllEmployeeList';
+import PayEmployeesSalary from '../Components/Main/Dashboard/ForAdmin/PayEmployeesSalary';
+import HomeAdmin from '../Components/Main/Dashboard/ForAdmin/RoutersForAdmin/HomeAdmin';
 
 const Router = createBrowserRouter([
   {
@@ -70,7 +74,32 @@ const Router = createBrowserRouter([
           },
         ],
       },
-
+      {
+        path: '/DashboardAdmin',
+        element: (
+          <PrivetRoot>
+            <RouterForAdmin></RouterForAdmin>
+          </PrivetRoot>
+        ),
+        children: [
+          {
+            path: '',
+            element: <Navigate to="HomeAdmin" replace></Navigate>, // ডিফল্টভাবে রিডাইরেক্ট হবে HomeHR-এ।
+          },
+          {
+            path: 'HomeAdmin',
+            element: <HomeAdmin></HomeAdmin>,
+          },
+          {
+            path: 'AllEmployeeList',
+            element: <AllEmployeeList></AllEmployeeList>,
+          },
+          {
+            path: 'PayEmployeesSalary',
+            element: <PayEmployeesSalary></PayEmployeesSalary>,
+          },
+        ],
+      },
       {
         path: '/NewsDetails/:id',
         element: <NewsDetails></NewsDetails>,

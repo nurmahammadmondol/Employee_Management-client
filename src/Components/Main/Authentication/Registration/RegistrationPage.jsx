@@ -57,7 +57,7 @@ const RegistrationPage = () => {
               .then(() => {
                 console.log(result.user);
                 console.log('Update Success');
-
+                navigate('/');
                 const UserInfo = {
                   Name: result.user?.displayName,
                   Email: result.user?.email,
@@ -98,6 +98,7 @@ const RegistrationPage = () => {
     CreateUserGoogle()
       .then(result => {
         console.log(result.user);
+        navigate('/');
 
         const UserInfo = {
           Name: result.user?.displayName,

@@ -1,12 +1,13 @@
 import Lottie from 'lottie-react';
 import React, { useContext } from 'react';
 import LottieFileLogin from '../../../../assets/LottieFile/Animation -Login (2).json';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Provider/AuthProvider';
 import useAxionPublic from '../../../Axios/useAxionPublic';
 
 const LoginPage = () => {
   const PublicAxios = useAxionPublic();
+  const navigate = useNavigate();
   const { CreateUserGoogle, LoginWithEmailPassword } = useContext(AuthContext);
 
   const handleLoginFormSubmit = e => {
@@ -19,6 +20,7 @@ const LoginPage = () => {
     LoginWithEmailPassword(Email, Password)
       .then(result => {
         console.log(result.user);
+        navigate('/');
       })
       .catch(error => {
         console.log(error.message);
@@ -29,6 +31,7 @@ const LoginPage = () => {
     CreateUserGoogle()
       .then(result => {
         console.log(result.user);
+        navigate('/');
 
         const UserInfo = {
           Name: result.user?.displayName,
