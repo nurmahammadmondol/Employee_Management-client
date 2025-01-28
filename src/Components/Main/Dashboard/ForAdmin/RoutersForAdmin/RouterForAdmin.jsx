@@ -10,13 +10,19 @@ const RouterForAdmin = () => {
           <div className="flex flex-col gap-3 text-cyan-400 mt-5">
             <Link to="/DashboardAdmin/HomeAdmin">
               <button className="btn w-full text-cyan-700  flex items-center gap-1">
-                <i class="fa-solid fa-house"></i>Home Admin
+                <i class="fa-solid fa-house"></i>Home
               </button>
             </Link>
 
             <Link to="/DashboardAdmin/AllEmployeeList">
               <button className="btn w-full text-cyan-700   flex items-center gap-1">
                 <i class="fa-solid fa-list"></i>All Employee List
+              </button>
+            </Link>
+
+            <Link to="/DashboardAdmin/WorkRecords">
+              <button className="btn w-full text-cyan-700   flex items-center gap-1">
+                <i class="fa-solid fa-newspaper"></i>Work Records
               </button>
             </Link>
 

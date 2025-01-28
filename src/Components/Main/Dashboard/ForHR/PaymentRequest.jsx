@@ -16,8 +16,8 @@ const PaymentRequest = () => {
         <div className="overflow-x-auto">
           <table className="table border">
             {/* head */}
-            <thead className="bg-gray-200 border-gray-300">
-              <tr className="text-center">
+            <thead className="bg-gray-200 border-gray-300 ">
+              <tr className="text-center text-base font-bold text-cyan-700">
                 <th>Serial No</th>
                 <th>Name</th>
                 <th>Date</th>
@@ -31,7 +31,7 @@ const PaymentRequest = () => {
                   <th>{index + 1}</th>
                   <td>{request?.name}</td>
                   <td>{request?.date}</td>
-                  <td>${request?.salary}</td>
+                  <td>${request?.salary || '_ _ _'}</td>
                   {request?.request ? (
                     <td>
                       <span className="text-green-500 bg-gray-200 px-3 py-1 rounded-2xl">

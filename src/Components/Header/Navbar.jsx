@@ -18,8 +18,8 @@ const Navbar = () => {
         <NavLink to="/DashboardAdmin">Dashboard</NavLink>
       )}
 
-      <NavLink>About</NavLink>
-      <NavLink>ContactUs</NavLink>
+      <NavLink to="/AboutUs">About</NavLink>
+      <NavLink to="/ContactUs">ContactUs</NavLink>
     </div>
   );
 
@@ -71,7 +71,7 @@ const Navbar = () => {
           {User ? (
             <button
               onClick={LogOutUser}
-              className="btn  text-xl btn-outline text-white"
+              className="btn text-xs btn-outline text-white"
             >
               Log out
             </button>

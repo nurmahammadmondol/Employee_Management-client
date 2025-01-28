@@ -70,8 +70,8 @@ const PayEmployeesSalary = () => {
 
   return (
     <div>
-      <h3 className="text-2xl md:text-4xl font-bold text-center mb-3 md:mb-5 ">
-        Pay Employees Salary
+      <h3 className="text-2xl md:text-4xl font-bold text-center mb-3 md:mb-5 flex justify-center items-center gap-3">
+        Pay Employees Salary<i class="fa-solid fa-comment-dollar"></i>
       </h3>
 
       <div className="overflow-x-auto">
@@ -101,7 +101,15 @@ const PayEmployeesSalary = () => {
             {paymentRequests.map((item, i) => (
               <tr className="text-center">
                 <td>{i + 1}</td>
-                <td>{item?.name}</td>
+                <td className="flex items-center gap-1 md:gap-2">
+                  <img
+                    className="w-11 h-11 rounded-full border"
+                    src={item?.photo}
+                    alt=""
+                  />
+
+                  <span className="font-semibold"> {item?.name}</span>
+                </td>
                 <td>${item?.salary || '_ _ _'}</td>
                 <td>{item?.date}</td>
                 <td>{item?.approvedTime || '_ _ _'}</td>

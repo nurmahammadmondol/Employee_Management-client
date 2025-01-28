@@ -4,6 +4,7 @@ import LottieFileLogin from '../../../../assets/LottieFile/Animation -Login (2).
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../Provider/AuthProvider';
 import useAxionPublic from '../../../Axios/useAxionPublic';
+import Swal from 'sweetalert2';
 
 const LoginPage = () => {
   const PublicAxios = useAxionPublic();
@@ -20,10 +21,25 @@ const LoginPage = () => {
     LoginWithEmailPassword(Email, Password)
       .then(result => {
         console.log(result.user);
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your account has been successfully logged in.',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate('/');
       })
       .catch(error => {
         console.log(error.message);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: `${error.message}`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
       });
   };
 
@@ -31,6 +47,14 @@ const LoginPage = () => {
     CreateUserGoogle()
       .then(result => {
         console.log(result.user);
+
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your account has been successfully logged in.',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate('/');
 
         const UserInfo = {
@@ -50,6 +74,13 @@ const LoginPage = () => {
       })
       .catch(error => {
         console.log(error.message);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: `${error.message}`,
+          showConfirmButton: false,
+          timer: 2000,
+        });
       });
   };
 

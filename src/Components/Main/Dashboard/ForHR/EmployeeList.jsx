@@ -13,6 +13,7 @@ const EmployeeList = () => {
   const { AllUser } = useContext(AuthContext); // Fetching all user data from context
   const AxiosSeccur = useAxiosSecuur();
   const [data, setData] = useState([]);
+  // console.log(AllUser);
 
   const handleSelaryPay = ID => {
     console.log('pay success', ID);
@@ -92,15 +93,19 @@ const EmployeeList = () => {
   useEffect(() => {
     if (AllUser && Array.isArray(AllUser)) {
       const employees = AllUser.filter(user => user.UserRole === 'Employee'); // Filter employees
+      console.log(employees);
       const formattedData = employees.map((user, index) => ({
         id: user._id || index + 1, // Unique identifier
         name: user.Name || 'Unknown', // Use 'Name' from context data
         email: user.Email || 'No Email',
         photo: user.Photo || '', // Use Photo URL
-        isVerified: user.isVerified || false, // Default to false if not present
+        isVerified: user.verified || false, // Default to false if not present
+        isDismiss: user.dismiss || false, // Default to false if not present
         bankAccount: user.BankAccount || 'N/A', // Bank Account information
         salary: user.Salary || 0, // Salary field (if applicable)
       }));
+      // console.log(formattedData);
+
       setData(formattedData);
     }
   }, [AllUser]);
@@ -144,11 +149,11 @@ const EmployeeList = () => {
     {
       header: 'Actions',
       cell: ({ row }) => (
-        <div className="flex gap-2 items-center justify-center">
+        <div className="flex gap-2 md:gap-4 items-center justify-center">
           <Link to={`/DashboardHR/EmplayeDetails/${row.original.id}`}>
             <button
-              onClick={() => handleEmplayeeDetailss(row.original.id)}
-              className="btn btn-sm flex items-center gap-2 text-xs md:text-sm"
+              onClick={() => handleEmplayeeDetailss(row.original)}
+              className="btn btn-sm btn-outline text-cyan-700 flex items-center gap-2 text-xs "
             >
               <i class="fa-solid fa-circle-info"></i>
               Details
@@ -157,14 +162,32 @@ const EmployeeList = () => {
 
           <button
             onClick={() => handleSelaryPay(row.original)}
-            className={`px-3 py-1 rounded flex items-center gap-2 ${
-              row.original.isVerified
+            className={`px-3 py-1 text-sm rounded flex items-center gap-2 ${
+              AllUser.some(user => user.dismiss && user._id === row.original.id)
+                ? 'opacity-50 bg-red-300 pointer-events-none cursor-not-allowed'
+                : row.original.isVerified
                 ? 'bg-green-500 text-white'
                 : 'bg-gray-300 text-gray-600'
             }`}
-            disabled={!row.original.isVerified}
+            disabled={
+              AllUser.some(
+                user => user.dismiss && user._id === row.original.id
+              ) || !row.original.isVerified
+            }
           >
-            <i class="fa-solid fa-money-check-dollar"></i>Pay
+            {AllUser.some(
+              user => user.dismiss && user._id === row.original.id
+            ) ? (
+              <div className="px-4 text-white">
+                <i class="fa-regular fa-user mr-2"></i>
+                Dismiss User
+              </div>
+            ) : (
+              <>
+                <i className="fa-solid fa-money-check-dollar"></i>Payment
+                Request
+              </>
+            )}
           </button>
         </div>
       ),

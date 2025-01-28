@@ -139,7 +139,12 @@ const AllEmployeeList = () => {
     // console.log(ID, FilterAdjustSalary?._id);
     // console.log(FilterAdjustSalary?.salary, FilterAdjustSalary);
     if (!FilterAdjustSalary) {
-      alert('request nai');
+      // alert('request nai');
+      Swal.fire(
+        'No requests.',
+        'Request has been not sent from HR yet !',
+        'info'
+      );
     } else {
       Swal.fire({
         title: 'Adjust Salary',
@@ -148,7 +153,7 @@ const AllEmployeeList = () => {
         FilterAdjustSalary?.salary || 'N/A'
       }</strong></span>
       <span>Date: <strong>${FilterAdjustSalary?.date || 'N/A'}</strong></span>
-    </div>`,
+      </div>`,
         input: 'number', // Input field for new salary
         inputPlaceholder: 'Enter new salary',
         inputAttributes: {

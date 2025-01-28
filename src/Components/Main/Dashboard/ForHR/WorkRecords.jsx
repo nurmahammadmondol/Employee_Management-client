@@ -93,7 +93,7 @@ const WorkRecords = () => {
         <table className="table border overflow-x-auto">
           {/* Table Header */}
           <thead className="bg-gray-200 border-gray-300">
-            <tr className="text-center">
+            <tr className="text-center  text-base font-bold text-cyan-700">
               <th>Serial No</th>
               <th>Tasks</th>
               <th>Employee Name</th>
@@ -104,7 +104,7 @@ const WorkRecords = () => {
           <tbody>
             {/* Table Rows */}
             {workSheet.map((progress, index) => (
-              <tr key={progress._id} className="text-center">
+              <tr key={progress._id} className="text-center ">
                 <th>{index + 1}</th>
                 <td>{progress?.tasks}</td>
                 <td className="flex justify-center items-center gap-2">

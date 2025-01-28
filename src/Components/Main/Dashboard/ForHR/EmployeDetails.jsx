@@ -81,7 +81,7 @@ const EmployeeDetails = () => {
       <div className="md:flex justify-around gap-10">
         <div className="">
           <img
-            className="w-32 h-32 md:w-40 md:h-40 rounded-full"
+            className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-full"
             src={employee.Photo}
             alt={employee.Name}
           />
@@ -92,7 +92,7 @@ const EmployeeDetails = () => {
 
         <div style={{ width: '600px', height: '400px' }}>
           {chartData ? <Bar data={chartData} /> : <p>Loading chart...</p>}
-          <h3 className="text-center">Salary vs Month</h3>
+          {/* <h3 className="text-center">Salary vs Month</h3> */}
         </div>
       </div>
     </div>

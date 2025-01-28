@@ -17,6 +17,8 @@ import RouterForAdmin from '../Components/Main/Dashboard/ForAdmin/RoutersForAdmi
 import AllEmployeeList from '../Components/Main/Dashboard/ForAdmin/AllEmployeeList';
 import PayEmployeesSalary from '../Components/Main/Dashboard/ForAdmin/PayEmployeesSalary';
 import HomeAdmin from '../Components/Main/Dashboard/ForAdmin/RoutersForAdmin/HomeAdmin';
+import ContactUs from '../Components/ContactUs/ContactUs';
+import AboutUs from '../Components/About/AboutUs';
 
 const Router = createBrowserRouter([
   {
@@ -95,6 +97,11 @@ const Router = createBrowserRouter([
             element: <AllEmployeeList></AllEmployeeList>,
           },
           {
+            path: 'WorkRecords',
+            element: <WorkRecords></WorkRecords>,
+            loader: () => fetch('http://localhost:3000/WorkSheet'),
+          },
+          {
             path: 'PayEmployeesSalary',
             element: <PayEmployeesSalary></PayEmployeesSalary>,
           },
@@ -105,6 +112,14 @@ const Router = createBrowserRouter([
         element: <NewsDetails></NewsDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:3000/latest-news/${params.id}`),
+      },
+      {
+        path: '/AboutUs',
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: '/ContactUs',
+        element: <ContactUs></ContactUs>,
       },
       {
         path: '/LoginPage',

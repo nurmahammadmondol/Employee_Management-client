@@ -6,6 +6,7 @@ import { AuthContext } from '../../../../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
 import { auth } from '../../../Firebase.config/Firebase.config';
 import useAxionPublic from '../../../Axios/useAxionPublic';
+import Swal from 'sweetalert2';
 
 const RegistrationPage = () => {
   const PublicAxios = useAxionPublic();
@@ -49,39 +50,77 @@ const RegistrationPage = () => {
           photoURL: PhotoURL, // ImageBB থেকে পাওয়া ছবির URL
         };
 
-        // Create User with Email and Password
-        CreateUserEmailPassword(Email, Password)
-          .then(result => {
-            // Update Profile
-            updateProfile(auth.currentUser, UserProfile)
-              .then(() => {
-                console.log(result.user);
-                console.log('Update Success');
-                navigate('/');
-                const UserInfo = {
-                  Name: result.user?.displayName,
-                  Email: result.user?.email,
-                  Photo: result.user?.photoURL,
-                  UserRole: UserRole,
-                  BankAccount: BankAccount,
-                };
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/;
 
-                PublicAxios.post('/User', UserInfo)
-                  .then(res => {
-                    console.log(res.data);
-                    navigate('/');
-                  })
-                  .catch(error => {
-                    console.log(error.message);
-                  });
-              })
-              .catch(error => {
-                console.log('Profile Update Error:', error.message);
-              });
-          })
-          .catch(error => {
-            console.log('User Creation Error:', error.message);
+        if (!passwordRegex.test(Password)) {
+          // এখানে .test() ব্যবহার করা হয়েছে
+          console.log(Password); // পাসওয়ার্ড শর্ত পূরণ না করলে এখানে আসবে
+
+          Swal.fire({
+            icon: 'error',
+            title: 'Invalid Password',
+            text: 'পাসওয়ার্ড অবশ্যই ৬ অক্ষরের হতে হবে, অন্তত ১টি বড় অক্ষর এবং ১টি বিশেষ অক্ষর থাকতে হবে!',
           });
+
+          return;
+        } else {
+          console.log('Password is valid!'); // শর্ত পূরণ হলে এখানে আসবে
+          // Create User with Email and Password
+          CreateUserEmailPassword(Email, Password)
+            .then(result => {
+              // Update Profile
+              updateProfile(auth.currentUser, UserProfile)
+                .then(() => {
+                  console.log(result.user);
+
+                  Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Account created successfully.',
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+
+                  navigate('/');
+                  const UserInfo = {
+                    Name: result.user?.displayName,
+                    Email: result.user?.email,
+                    Photo: result.user?.photoURL,
+                    UserRole: UserRole,
+                    BankAccount: BankAccount,
+                  };
+
+                  PublicAxios.post('/User', UserInfo)
+                    .then(res => {
+                      console.log(res.data);
+                      navigate('/');
+                    })
+                    .catch(error => {
+                      console.log(error.message);
+                    });
+                })
+                .catch(error => {
+                  console.log('Profile Update Error:', error.message);
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `${error.message}`,
+                    footer:
+                      '<a href="/RegistrationPage">Why do I have this issue?</a>',
+                  });
+                });
+            })
+            .catch(error => {
+              console.log('User Creation Error:', error.message);
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: `${error.message}`,
+                footer:
+                  '<a href="/RegistrationPage">Why do I have this issue?</a>',
+              });
+            });
+        }
       } else {
         console.error('Image upload failed');
       }
@@ -98,6 +137,13 @@ const RegistrationPage = () => {
     CreateUserGoogle()
       .then(result => {
         console.log(result.user);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Account created successfully.',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate('/');
 
         const UserInfo = {
@@ -113,10 +159,23 @@ const RegistrationPage = () => {
           })
           .catch(error => {
             console.log(error.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: `${error.message}`,
+              footer:
+                '<a href="/RegistrationPage">Why do I have this issue?</a>',
+            });
           });
       })
       .catch(error => {
         console.log(error.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${error.message}`,
+          footer: '<a href="/RegistrationPage">Why do I have this issue?</a>',
+        });
       });
   };
 
