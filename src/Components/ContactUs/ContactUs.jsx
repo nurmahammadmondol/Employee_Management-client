@@ -95,7 +95,7 @@ const ContactUs = () => {
               ></textarea>
 
               <div className="">
-                <button className="btn w-full text-white border-none bg-cyan-600">
+                <button className="btn w-full text-white border-none bg-cyan-500">
                   Send
                 </button>
               </div>

@@ -11,7 +11,7 @@ const AboutUs = () => {
       </div>
       <div className="w-full p-3">
         <h3 className="text-2xl md:text-4xl font-bold mb-2">
-          Welcome to EmpowerHub!
+          Employee Management System
         </h3>
         <p>
           EmpowerHub is your trusted platform for streamlined and efficient HR
