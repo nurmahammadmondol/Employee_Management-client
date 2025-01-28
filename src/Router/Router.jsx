@@ -19,6 +19,8 @@ import PayEmployeesSalary from '../Components/Main/Dashboard/ForAdmin/PayEmploye
 import HomeAdmin from '../Components/Main/Dashboard/ForAdmin/RoutersForAdmin/HomeAdmin';
 import ContactUs from '../Components/ContactUs/ContactUs';
 import AboutUs from '../Components/About/AboutUs';
+import PrivetRootInHR from '../PrivetRoot/PrivetRootInHR';
+import PrivetRootInAdmin from '../PrivetRoot/PrivetRootInAdmin';
 
 const Router = createBrowserRouter([
   {
@@ -42,7 +44,9 @@ const Router = createBrowserRouter([
         path: '/DashboardHR',
         element: (
           <PrivetRoot>
-            <RoutersForHR></RoutersForHR>
+            <PrivetRootInHR>
+              <RoutersForHR></RoutersForHR>
+            </PrivetRootInHR>
           </PrivetRoot>
         ),
         children: [
@@ -52,25 +56,45 @@ const Router = createBrowserRouter([
           },
           {
             path: 'HomeHR',
-            element: <HomeHR></HomeHR>,
+            element: (
+              <PrivetRootInHR>
+                <HomeHR></HomeHR>
+              </PrivetRootInHR>
+            ),
           },
           {
             path: 'EmployeeList',
-            element: <EmployeeList></EmployeeList>,
+            element: (
+              <PrivetRootInHR>
+                <EmployeeList></EmployeeList>
+              </PrivetRootInHR>
+            ),
           },
           {
             path: 'WorkRecords',
-            element: <WorkRecords></WorkRecords>,
+            element: (
+              <PrivetRootInHR>
+                <WorkRecords></WorkRecords>
+              </PrivetRootInHR>
+            ),
             loader: () => fetch('http://localhost:3000/WorkSheet'),
           },
           {
             path: 'PaymentRequest',
-            element: <PaymentRequest></PaymentRequest>,
+            element: (
+              <PrivetRootInHR>
+                <PaymentRequest></PaymentRequest>
+              </PrivetRootInHR>
+            ),
             loader: () => fetch('http://localhost:3000/Payment_Request'),
           },
           {
             path: 'EmplayeDetails/:id',
-            element: <EmployeDetails></EmployeDetails>,
+            element: (
+              <PrivetRootInHR>
+                <EmployeDetails></EmployeDetails>
+              </PrivetRootInHR>
+            ),
             loader: ({ params }) =>
               fetch(`http://localhost:3000/User/${params.id}`),
           },
@@ -80,7 +104,9 @@ const Router = createBrowserRouter([
         path: '/DashboardAdmin',
         element: (
           <PrivetRoot>
-            <RouterForAdmin></RouterForAdmin>
+            <PrivetRootInAdmin>
+              <RouterForAdmin></RouterForAdmin>
+            </PrivetRootInAdmin>
           </PrivetRoot>
         ),
         children: [
@@ -90,20 +116,36 @@ const Router = createBrowserRouter([
           },
           {
             path: 'HomeAdmin',
-            element: <HomeAdmin></HomeAdmin>,
+            element: (
+              <PrivetRootInAdmin>
+                <HomeAdmin></HomeAdmin>,
+              </PrivetRootInAdmin>
+            ),
           },
           {
             path: 'AllEmployeeList',
-            element: <AllEmployeeList></AllEmployeeList>,
+            element: (
+              <PrivetRootInAdmin>
+                <AllEmployeeList></AllEmployeeList>
+              </PrivetRootInAdmin>
+            ),
           },
           {
             path: 'WorkRecords',
-            element: <WorkRecords></WorkRecords>,
+            element: (
+              <PrivetRootInAdmin>
+                <WorkRecords></WorkRecords>
+              </PrivetRootInAdmin>
+            ),
             loader: () => fetch('http://localhost:3000/WorkSheet'),
           },
           {
             path: 'PayEmployeesSalary',
-            element: <PayEmployeesSalary></PayEmployeesSalary>,
+            element: (
+              <PrivetRootInAdmin>
+                <PayEmployeesSalary></PayEmployeesSalary>
+              </PrivetRootInAdmin>
+            ),
           },
         ],
       },

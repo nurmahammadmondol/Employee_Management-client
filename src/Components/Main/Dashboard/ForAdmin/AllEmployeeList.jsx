@@ -55,6 +55,7 @@ const AllEmployeeList = () => {
   // console.log(paymentRequests);
 
   const makeHR = employeeData => {
+    console.log('Employee Data:', employeeData); // Log the employee data
     Swal.fire({
       title: 'Are you sure?',
       text: 'You are about to promote this Employee to HR. This action cannot be undone!',
@@ -64,16 +65,16 @@ const AllEmployeeList = () => {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, promote to HR',
     }).then(result => {
+      console.log('Confirmation Result:', result); // Log the Swal result
       if (result.isConfirmed) {
-        // যদি ব্যবহারকারী নিশ্চিত করে
-
         const UserRole = {
+          ...employeeData,
           UserRole: 'HR',
         };
 
-        AxiosSeccur.patch(`/User/${employeeData?._id}`, UserRole)
+        AxiosSeccur.patch(`/User/${employeeData._id}`, UserRole)
           .then(res => {
-            console.log(res.data);
+            console.log('API Response:', res.data); // Log the response from the server
             refetch();
             if (res.data.modifiedCount > 0) {
               Swal.fire({
@@ -85,14 +86,13 @@ const AllEmployeeList = () => {
             }
           })
           .catch(error => {
-            console.log(error);
+            console.error('API Error:', error); // Log API errors
           });
       }
     });
   };
 
   const fireEmployee = employeeData => {
-    // console.log(employeeData?._id);
     Swal.fire({
       title: 'Are you sure?',
       text: 'You are about to dismiss this employee. This action cannot be undone!',
@@ -104,8 +104,6 @@ const AllEmployeeList = () => {
       cancelButtonText: 'Cancel',
     }).then(result => {
       if (result.isConfirmed) {
-        // যদি ব্যবহারকারী নিশ্চিত করে
-
         const addDismiss = {
           ...employeeData,
           Dismiss: true,
@@ -113,11 +111,10 @@ const AllEmployeeList = () => {
 
         AxiosSeccur.patch(`/User/${employeeData?._id}`, addDismiss)
           .then(res => {
-            console.log(res.data);
             refetch();
             if (res.data.modifiedCount > 0) {
               Swal.fire({
-                title: 'Dismiss !',
+                title: 'Dismissed!',
                 text: `${employeeData?.Name} has been dismissed successfully.`,
                 icon: 'success',
                 confirmButtonText: 'Okay',
@@ -136,10 +133,8 @@ const AllEmployeeList = () => {
     const FilterAdjustSalary = paymentRequests.find(
       RequestID => RequestID.id == ID && RequestID.request !== true
     );
-    // console.log(ID, FilterAdjustSalary?._id);
-    // console.log(FilterAdjustSalary?.salary, FilterAdjustSalary);
+
     if (!FilterAdjustSalary) {
-      // alert('request nai');
       Swal.fire(
         'No requests.',
         'Request has been not sent from HR yet !',
@@ -149,16 +144,16 @@ const AllEmployeeList = () => {
       Swal.fire({
         title: 'Adjust Salary',
         html: `<div class="text-sm flex justify-center items-center gap-5">
-      <span>Current Salary: <strong>${
-        FilterAdjustSalary?.salary || 'N/A'
-      }</strong></span>
-      <span>Date: <strong>${FilterAdjustSalary?.date || 'N/A'}</strong></span>
-      </div>`,
-        input: 'number', // Input field for new salary
+          <span>Current Salary: <strong>${
+            FilterAdjustSalary?.salary || 'N/A'
+          }</strong></span>
+          <span>Date: <strong>${
+            FilterAdjustSalary?.date || 'N/A'
+          }</strong></span>
+        </div>`,
+        input: 'number',
         inputPlaceholder: 'Enter new salary',
-        inputAttributes: {
-          min: '0', // Salary can't be negative
-        },
+        inputAttributes: { min: '0' },
         showCancelButton: true,
         confirmButtonColor: '#89CFF0',
         cancelButtonColor: '#d33',
@@ -166,23 +161,19 @@ const AllEmployeeList = () => {
         cancelButtonText: 'Cancel',
       }).then(result => {
         if (result.isConfirmed) {
-          const Salary = result.value; // New salary from the input
-          const newSelary = { salary: Salary }; // Pass the salary inside an object
-          console.log('New Salary Object:', newSelary); // Check the newSelary object
+          const Salary = result.value;
+          const newSelary = { salary: Salary };
 
           if (Salary) {
-            // Call the function to update the salary in the database
             AxiosSeccur.patch(
               `Payment_Request/${FilterAdjustSalary?._id}`,
-              newSelary // Send the object with salary field
+              newSelary
             )
               .then(res => {
-                console.log(res.data);
                 refetch();
-
                 if (res.data.modifiedCount > 0) {
                   Swal.fire({
-                    title: 'Salary updated !',
+                    title: 'Salary updated!',
                     text: `This employee's salary has been updated.`,
                     icon: 'success',
                     confirmButtonText: 'Okay',
@@ -207,14 +198,14 @@ const AllEmployeeList = () => {
         <Tabs>
           <TabList>
             <Tab>
-              <i class="fa-solid fa-users-line mr-2"></i>
+              <i className="fa-solid fa-users-line mr-2"></i>
               All Employee List
             </Tab>
             <Tab>
-              <i class="fa-solid fa-user-group mr-2"></i>(HR)
+              <i className="fa-solid fa-user-group mr-2"></i>(HR)
             </Tab>
             <Tab>
-              <i class="fa-solid fa-users-gear mr-2"></i>(Employee)
+              <i className="fa-solid fa-users-gear mr-2"></i>(Employee)
             </Tab>
           </TabList>
 

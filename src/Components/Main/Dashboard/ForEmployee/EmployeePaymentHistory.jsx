@@ -1,10 +1,38 @@
-import React from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React, { useContext } from 'react';
+import useAxiosSecuur from '../../../Axios/useAxiosSecuur';
+import { AuthContext } from '../../../../Provider/AuthProvider';
 
 const EmployeePaymentHistory = () => {
+  const { User } = useContext(AuthContext);
+  const AxiosSeccur = useAxiosSecuur();
+
+  const {
+    isPending,
+    error,
+    refetch,
+    data: paymentRequests = [],
+  } = useQuery({
+    queryKey: ['Payment_Request'],
+    queryFn: async () => {
+      const res = await AxiosSeccur.get('/Payment_Request');
+      console.log(res.data);
+
+      const myRequest = res.data
+        .filter(myData => myData.email === User.email)
+        .reverse(); // Corrected typo
+
+      return myRequest;
+    },
+  });
+
+  // console.log(paymentRequests);
+
   return (
     <div>
-      <h5 className="text-center font-bold mb-5 text-gray-400  text-lg ">
+      <h5 className="text-center font-bold mb-5  text-gray-400 flex justify-center items-center gap-3">
         Your monthly salary payment history
+        <i class="fa-solid fa-circle-dollar-to-slot text-lg"></i>
       </h5>
 
       <div>
@@ -12,7 +40,7 @@ const EmployeePaymentHistory = () => {
           <table className="table">
             {/* head */}
             <thead>
-              <tr className="bg-gray-200 text-center text-lg">
+              <tr className="bg-gray-200 text-cyan-700  text-center text-base font-bold">
                 <th>Serial No</th>
                 <th>Date</th>
                 <th>Amount</th>
@@ -20,12 +48,28 @@ const EmployeePaymentHistory = () => {
               </tr>
             </thead>
             <tbody className="text-center">
-              <tr>
-                <th>_ _ _</th>
-                <td>_ _ _</td>
-                <td>_ _ _</td>
-                <td>_ _ _</td>
-              </tr>
+              {paymentRequests ? (
+                <>
+                  {paymentRequests.map((MyRequest, i) => (
+                    <tr key={MyRequest._id}>
+                      <th>{i + 1}</th>
+                      <td>{MyRequest.approvedTime}</td>
+                      <td className="flex justify-center items-center gap-1">
+                        <i class="fa-solid fa-dollar-sign"></i>
+                        {MyRequest.salary}
+                      </td>
+                      <td>{MyRequest._id}</td>
+                    </tr>
+                  ))}
+                </>
+              ) : (
+                <tr>
+                  <th>_ _ _</th>
+                  <td>_ _ _</td>
+                  <td>_ _ _</td>
+                  <td>_ _ _</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

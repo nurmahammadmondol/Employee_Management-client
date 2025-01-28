@@ -39,7 +39,7 @@ const TableData = ({ employees, makeHR, fireEmployee, adjustSalary }) => {
                       employee.dismiss &&
                       'opacity-50 text-red-500 pointer-events-none cursor-not-allowed'
                     }`}
-                    onClick={() => makeHR(employee._id)}
+                    onClick={() => makeHR(employee)}
                   >
                     Make HR
                   </button>

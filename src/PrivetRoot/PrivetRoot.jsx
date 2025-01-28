@@ -5,6 +5,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 const PrivetRoot = ({ children }) => {
   const location = useLocation();
   const { User, loading } = useContext(AuthContext);
+
   if (loading) {
     return (
       <div className="min-h-screen flex flex-col justify-center items-center">

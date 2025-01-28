@@ -35,6 +35,9 @@ const WorkRecords = () => {
     }
   };
 
+  if (!LoaderData) {
+    return <h5>Loading...</h5>;
+  }
   return (
     <div>
       <div className="mb-5 md:mb-10">
