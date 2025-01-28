@@ -26,27 +26,39 @@ const PaymentRequest = () => {
               </tr>
             </thead>
             <tbody>
-              {RequestData.map((request, index) => (
-                <tr className="text-center">
-                  <th>{index + 1}</th>
-                  <td>{request?.name}</td>
-                  <td>{request?.date}</td>
-                  <td>${request?.salary || '_ _ _'}</td>
-                  {request?.request ? (
-                    <td>
-                      <span className="text-green-500 bg-gray-200 px-3 py-1 rounded-2xl">
-                        Approved
-                      </span>
-                    </td>
-                  ) : (
-                    <td>
-                      <span className="text-red-500 bg-gray-200 px-3 py-1 rounded-2xl">
-                        Pending
-                      </span>
-                    </td>
-                  )}
+              {RequestData ? (
+                <>
+                  {RequestData.map((request, index) => (
+                    <tr className="text-center">
+                      <th>{index + 1}</th>
+                      <td>{request?.name}</td>
+                      <td>{request?.date}</td>
+                      <td>${request?.salary || '_ _ _'}</td>
+                      {request?.request ? (
+                        <td>
+                          <span className="text-green-500 bg-gray-200 px-3 py-1 rounded-2xl">
+                            Approved
+                          </span>
+                        </td>
+                      ) : (
+                        <td>
+                          <span className="text-red-500 bg-gray-200 px-3 py-1 rounded-2xl">
+                            Pending
+                          </span>
+                        </td>
+                      )}
+                    </tr>
+                  ))}
+                </>
+              ) : (
+                <tr>
+                  <td>_ _ _</td>
+                  <td>_ _ _</td>
+                  <td>_ _ _</td>
+                  <td>_ _ _</td>
+                  <td>_ _ _</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>

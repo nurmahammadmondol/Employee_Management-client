@@ -11,7 +11,9 @@ const LatestNews = () => {
   console.log(foreNumberNews);
 
   useEffect(() => {
-    axios('http://localhost:3000/latest-news').then(res => {
+    axios(
+      'https://employee-management-server-site-ashy.vercel.app/latest-news'
+    ).then(res => {
       // console.log(res.data);
       setData(res.data);
     });

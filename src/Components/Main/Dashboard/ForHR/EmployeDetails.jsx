@@ -40,7 +40,9 @@ const EmployeeDetails = () => {
     // ডেটা Fetch করো Backend থেকে
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/User/${id}`);
+        const response = await fetch(
+          `https://employee-management-server-site-ashy.vercel.app/User/${id}`
+        );
         const data = await response.json();
         setEmployee(data);
         // console.log(data);

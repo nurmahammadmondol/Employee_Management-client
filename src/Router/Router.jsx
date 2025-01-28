@@ -77,7 +77,10 @@ const Router = createBrowserRouter([
                 <WorkRecords></WorkRecords>
               </PrivetRootInHR>
             ),
-            loader: () => fetch('http://localhost:3000/WorkSheet'),
+            loader: () =>
+              fetch(
+                'https://employee-management-server-site-ashy.vercel.app/WorkSheet'
+              ),
           },
           {
             path: 'PaymentRequest',
@@ -86,7 +89,10 @@ const Router = createBrowserRouter([
                 <PaymentRequest></PaymentRequest>
               </PrivetRootInHR>
             ),
-            loader: () => fetch('http://localhost:3000/Payment_Request'),
+            loader: () =>
+              fetch(
+                'https://employee-management-server-site-ashy.vercel.app/Payment_Request'
+              ),
           },
           {
             path: 'EmplayeDetails/:id',
@@ -96,7 +102,9 @@ const Router = createBrowserRouter([
               </PrivetRootInHR>
             ),
             loader: ({ params }) =>
-              fetch(`http://localhost:3000/User/${params.id}`),
+              fetch(
+                `https://employee-management-server-site-ashy.vercel.app/User/${params.id}`
+              ),
           },
         ],
       },
@@ -137,7 +145,10 @@ const Router = createBrowserRouter([
                 <WorkRecords></WorkRecords>
               </PrivetRootInAdmin>
             ),
-            loader: () => fetch('http://localhost:3000/WorkSheet'),
+            loader: () =>
+              fetch(
+                'https://employee-management-server-site-ashy.vercel.app/WorkSheet'
+              ),
           },
           {
             path: 'PayEmployeesSalary',
@@ -153,7 +164,9 @@ const Router = createBrowserRouter([
         path: '/NewsDetails/:id',
         element: <NewsDetails></NewsDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/latest-news/${params.id}`),
+          fetch(
+            `https://employee-management-server-site-ashy.vercel.app/latest-news/${params.id}`
+          ),
       },
       {
         path: '/AboutUs',

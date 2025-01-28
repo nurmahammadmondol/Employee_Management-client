@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://employee-management-server-site-ashy.vercel.app',
 });
 
 const useAxiosSecuur = () => {

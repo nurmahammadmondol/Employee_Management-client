@@ -1,32 +1,28 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import useAxiosSecuur from '../../../Axios/useAxiosSecuur';
 import { AuthContext } from '../../../../Provider/AuthProvider';
 
 const EmployeePaymentHistory = () => {
   const { User } = useContext(AuthContext);
   const AxiosSeccur = useAxiosSecuur();
+  const [paymentRequests, setpaymentRequests] = useState([]);
 
-  const {
-    isPending,
-    error,
-    refetch,
-    data: paymentRequests = [],
-  } = useQuery({
-    queryKey: ['Payment_Request'],
-    queryFn: async () => {
-      const res = await AxiosSeccur.get('/Payment_Request');
-      console.log(res.data);
+  useEffect(() => {
+    AxiosSeccur.get('/Payment_Request')
+      .then(res => {
+        console.log(res.data);
+        const myRequest = res.data
+          .filter(myData => myData.email === User.email)
+          .reverse();
+        setpaymentRequests(myRequest);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  }, []);
 
-      const myRequest = res.data
-        .filter(myData => myData.email === User.email)
-        .reverse(); // Corrected typo
-
-      return myRequest;
-    },
-  });
-
-  // console.log(paymentRequests);
+  console.log(paymentRequests);
 
   return (
     <div>
