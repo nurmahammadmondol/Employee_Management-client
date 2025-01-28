@@ -66,7 +66,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, carrentUser => {
       setUser(carrentUser);
       setLoading(false);
-      console.log('Your account created successfully', carrentUser);
+      // console.log('Your account created successfully', carrentUser);
     });
 
     return () => {

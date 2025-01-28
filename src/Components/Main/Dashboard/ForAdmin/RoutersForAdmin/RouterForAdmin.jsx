@@ -1,10 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { AuthContext } from '../../../../../Provider/AuthProvider';
 
 const RouterForAdmin = () => {
-  const { User } = useContext(AuthContext);
-
   return (
     <div>
       <div className="py-11 bg-cyan-50"></div>
