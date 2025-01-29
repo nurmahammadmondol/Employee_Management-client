@@ -8,7 +8,7 @@ const Navbar = () => {
     <div className="  md:text-xl font-bold flex items-center gap-4 md:gap-7">
       <NavLink>Home</NavLink>
 
-      {/* {!User && <NavLink to="/LoginPage">Dashboard </NavLink>} */}
+      {!User && <NavLink to="/LoginPage">Dashboard </NavLink>}
 
       {User && userData.UserRole === 'Employee' && (
         <NavLink to="/DashboardEmployes">Dashboard </NavLink>

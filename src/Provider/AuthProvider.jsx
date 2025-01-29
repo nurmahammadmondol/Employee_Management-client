@@ -8,7 +8,7 @@ import {
 } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
 import { auth } from '../Components/Firebase.config/Firebase.config';
-import axios from 'axios';
+
 import useAxiosSecuur from '../Components/Axios/useAxiosSecuur';
 
 export const AuthContext = createContext(null);
@@ -62,7 +62,7 @@ const AuthProvider = ({ children }) => {
         const userData = res.data;
         const userDataFind = userData.find(data => data?.Email === User?.email);
 
-        // console.log(userDataFind);
+        console.log(userDataFind);
 
         if (userDataFind) {
           setUserData(userDataFind);

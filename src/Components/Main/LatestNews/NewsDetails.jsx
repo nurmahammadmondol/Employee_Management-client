@@ -22,7 +22,7 @@ const NewsDetails = () => {
 
   useEffect(() => {
     axios(
-      'https://employee-management-server-site-ashy.vercel.app/latest-news'
+      'https://employee-management-server-two-eight.vercel.app/latest-news'
     ).then(res => {
       // console.log(res.data);
       setData(res.data);

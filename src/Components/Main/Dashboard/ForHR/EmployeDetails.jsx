@@ -41,7 +41,7 @@ const EmployeeDetails = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://employee-management-server-site-ashy.vercel.app/User/${id}`
+          `https://employee-management-server-two-eight.vercel.app/User/${id}`
         );
         const data = await response.json();
         setEmployee(data);

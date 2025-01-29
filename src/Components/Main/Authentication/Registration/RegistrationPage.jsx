@@ -59,7 +59,7 @@ const RegistrationPage = () => {
           Swal.fire({
             icon: 'error',
             title: 'Invalid Password',
-            text: 'পাসওয়ার্ড অবশ্যই ৬ অক্ষরের হতে হবে, অন্তত ১টি বড় অক্ষর এবং ১টি বিশেষ অক্ষর থাকতে হবে!',
+            text: 'The password must be 6 characters long, contain at least 1 uppercase letter and 1 special character!',
           });
 
           return;
@@ -123,6 +123,11 @@ const RegistrationPage = () => {
         }
       } else {
         console.error('Image upload failed');
+        Swal.fire({
+          icon: 'error',
+          title: 'Image upload failed',
+          text: 'Please upload a photo of yourself.',
+        });
       }
     } catch (error) {
       console.error('Error uploading image:', error);

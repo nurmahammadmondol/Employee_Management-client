@@ -79,7 +79,7 @@ const Router = createBrowserRouter([
             ),
             loader: () =>
               fetch(
-                'https://employee-management-server-site-ashy.vercel.app/WorkSheet'
+                'https://employee-management-server-two-eight.vercel.app/WorkSheet'
               ),
           },
           {
@@ -91,7 +91,7 @@ const Router = createBrowserRouter([
             ),
             loader: () =>
               fetch(
-                'https://employee-management-server-site-ashy.vercel.app/Payment_Request'
+                'https://employee-management-server-two-eight.vercel.app/Payment_Request'
               ),
           },
           {
@@ -103,7 +103,7 @@ const Router = createBrowserRouter([
             ),
             loader: ({ params }) =>
               fetch(
-                `https://employee-management-server-site-ashy.vercel.app/User/${params.id}`
+                `https://employee-management-server-two-eight.vercel.app/User/${params.id}`
               ),
           },
         ],
@@ -147,7 +147,7 @@ const Router = createBrowserRouter([
             ),
             loader: () =>
               fetch(
-                'https://employee-management-server-site-ashy.vercel.app/WorkSheet'
+                'https://employee-management-server-two-eight.vercel.app/WorkSheet'
               ),
           },
           {
@@ -165,7 +165,7 @@ const Router = createBrowserRouter([
         element: <NewsDetails></NewsDetails>,
         loader: ({ params }) =>
           fetch(
-            `https://employee-management-server-site-ashy.vercel.app/latest-news/${params.id}`
+            `https://employee-management-server-two-eight.vercel.app/latest-news/${params.id}`
           ),
       },
       {
