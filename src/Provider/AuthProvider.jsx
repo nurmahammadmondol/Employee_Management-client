@@ -20,27 +20,6 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const AxiosSecuur = useAxiosSecuur();
 
-  useEffect(() => {
-    AxiosSecuur.get('/User')
-      .then(res => {
-        // console.log(res.data);
-        setAllUser(res.data);
-
-        const userData = res.data;
-        const userDataFind = userData.find(data => data?.Email === User?.email);
-
-        // console.log(userDataFind);
-
-        if (userDataFind) {
-          setUserData(userDataFind);
-          // setUserData(userDataFind); // Uncomment if you want to set state
-        }
-      })
-      .catch(error => {
-        console.error('Error fetching user data:', error.message);
-      });
-  }, [User]);
-
   const CreateUserEmailPassword = (Email, Password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, Email, Password);
@@ -73,6 +52,27 @@ const AuthProvider = ({ children }) => {
       return unSubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    AxiosSecuur.get('/User')
+      .then(res => {
+        console.log(res.data);
+        setAllUser(res.data);
+
+        const userData = res.data;
+        const userDataFind = userData.find(data => data?.Email === User?.email);
+
+        // console.log(userDataFind);
+
+        if (userDataFind) {
+          setUserData(userDataFind);
+          // setUserData(userDataFind); // Uncomment if you want to set state
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching user data:', error.message);
+      });
+  }, [User]);
 
   const authInfo = {
     CreateUserEmailPassword,

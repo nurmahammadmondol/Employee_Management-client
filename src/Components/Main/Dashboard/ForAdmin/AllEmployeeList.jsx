@@ -45,6 +45,7 @@ const AllEmployeeList = () => {
       );
 
       // Return both user data and payment requests data
+      console.log(FilterEmployeeAndHr);
       return {
         employees: FilterEmployeeAndHr,
         paymentRequests: paymentResponse?.data, // Assuming /Payment_Request provides data
@@ -52,7 +53,7 @@ const AllEmployeeList = () => {
     },
   });
 
-  // console.log(paymentRequests);
+  console.log(paymentRequests, employees);
 
   const makeHR = employeeData => {
     console.log('Employee Data:', employeeData); // Log the employee data

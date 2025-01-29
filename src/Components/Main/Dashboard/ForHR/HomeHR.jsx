@@ -9,7 +9,7 @@ const HomeHR = () => {
       <h4 className="text-cyan-800  border-b-2 border-black font-bold text-lg  mb-5">
         My Profile
       </h4>
-      <div className="flex items-center gap-5 md:gap-16 border">
+      <div className="flex items-center gap-5 md:gap-16 ">
         <div className="w-1/3 h-[100px] md:h-[350px] border-2 rounded-full">
           <img
             className="w-full h-full rounded-full"

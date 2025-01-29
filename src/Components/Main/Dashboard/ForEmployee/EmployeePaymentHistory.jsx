@@ -44,7 +44,7 @@ const EmployeePaymentHistory = () => {
               </tr>
             </thead>
             <tbody className="text-center">
-              {paymentRequests ? (
+              {paymentRequests.length > 0 ? (
                 <>
                   {paymentRequests.map((MyRequest, i) => (
                     <tr key={MyRequest._id}>

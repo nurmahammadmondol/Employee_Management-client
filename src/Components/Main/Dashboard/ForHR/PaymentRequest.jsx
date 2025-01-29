@@ -36,14 +36,14 @@ const PaymentRequest = () => {
                       <td>${request?.salary || '_ _ _'}</td>
                       {request?.request ? (
                         <td>
-                          <span className="text-green-500 bg-gray-200 px-3 py-1 rounded-2xl">
+                          <span className="text-green-400  bg-green-50 border border-green-400 px-3 py-1 rounded-2xl">
                             Approved
                           </span>
                         </td>
                       ) : (
                         <td>
-                          <span className="text-red-500 bg-gray-200 px-3 py-1 rounded-2xl">
-                            Pending
+                          <span className="text-yellow-400 border border-yellow-400 bg-yellow-50 px-3 py-1 rounded-2xl ">
+                            Pending...
                           </span>
                         </td>
                       )}

@@ -35,7 +35,7 @@ const PayEmployeesSalary = () => {
       showCancelButton: true,
       confirmButtonText: 'Pay Now',
       confirmButtonColor: '#89CFF0',
-      denyButtonText: `Don't Pay`,
+      denyButtonText: `Reject`,
     }).then(result => {
       if (result.isConfirmed) {
         const addNowDate = {
@@ -63,7 +63,12 @@ const PayEmployeesSalary = () => {
             console.error(error);
           });
       } else if (result.isDenied) {
-        Swal.fire("I won't pay now", '', 'info');
+        Swal.fire({
+          title: 'I will not pay.',
+          showDenyButton: true,
+          confirmButtonText: 'Reject',
+          confirmButtonColor: '#89CFF0',
+        });
       }
     });
   };

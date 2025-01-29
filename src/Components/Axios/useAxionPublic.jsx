@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'https://employee-management-server-site-ashy.vercel.app',
+  baseURL: 'http://localhost:5000',
 });
 
 const useAxionPublic = () => {
