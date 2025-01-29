@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 
 const TableJustEmployees = ({ EmployeeData, fireEmployee, adjustSalary }) => {
   return (
-    <div className="overflow-x-auto">
+    <div className="w-full h-[500px] overflow-x-auto overflow-y-auto">
       <table className="table-auto w-full border-collapse border border-gray-300 mt-5">
         <thead>
           <tr className="bg-gray-100">

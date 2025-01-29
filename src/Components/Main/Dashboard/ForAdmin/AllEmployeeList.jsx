@@ -28,26 +28,26 @@ const AllEmployeeList = () => {
       ]);
 
       // Filter HR Data
-      const FilterHRData = userResponse.data.filter(
+      const FilterHRData = userResponse?.data?.filter(
         data => data.UserRole === 'HR'
       );
       setHrData(FilterHRData);
 
       // Filter Employee Data
-      const FilterEmployeeData = userResponse.data.filter(
+      const FilterEmployeeData = userResponse?.data?.filter(
         data => data.UserRole === 'Employee'
       );
       setEmployeeData(FilterEmployeeData);
 
       // Filter Combined Data (HR + Employee)
-      const FilterEmployeeAndHr = userResponse.data.filter(
+      const FilterEmployeeAndHr = userResponse?.data?.filter(
         data => data.UserRole === 'HR' || data.UserRole === 'Employee'
       );
 
       // Return both user data and payment requests data
       return {
         employees: FilterEmployeeAndHr,
-        paymentRequests: paymentResponse.data, // Assuming /Payment_Request provides data
+        paymentRequests: paymentResponse?.data, // Assuming /Payment_Request provides data
       };
     },
   });

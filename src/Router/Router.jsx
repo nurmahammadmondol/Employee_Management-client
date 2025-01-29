@@ -120,7 +120,7 @@ const Router = createBrowserRouter([
         children: [
           {
             path: '',
-            element: <Navigate to="HomeAdmin" replace></Navigate>, // ডিফল্টভাবে রিডাইরেক্ট হবে HomeHR-এ।
+            element: <Navigate to="HomeAdmin" replace></Navigate>,
           },
           {
             path: 'HomeAdmin',

@@ -35,9 +35,6 @@ const WorkRecords = () => {
     }
   };
 
-  if (!LoaderData) {
-    return <h5>Loading...</h5>;
-  }
   return (
     <div>
       <div className="mb-5 md:mb-10">
@@ -92,7 +89,7 @@ const WorkRecords = () => {
         </div>
       </div>
 
-      <div className="w-full overflow-x-auto">
+      <div className="w-full h-[500px] overflow-x-auto overflow-y-auto">
         <table className="table border overflow-x-auto">
           {/* Table Header */}
           <thead className="bg-gray-200 border-gray-300">

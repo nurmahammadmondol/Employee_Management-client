@@ -7,7 +7,9 @@ const Navbar = () => {
   const Links = (
     <div className="  md:text-xl font-bold flex items-center gap-4 md:gap-7">
       <NavLink>Home</NavLink>
-      {/* <NavLink to="">Dashboard </NavLink> */}
+
+      {/* {!User && <NavLink to="/LoginPage">Dashboard </NavLink>} */}
+
       {User && userData.UserRole === 'Employee' && (
         <NavLink to="/DashboardEmployes">Dashboard </NavLink>
       )}
@@ -50,7 +52,10 @@ const Navbar = () => {
             {Links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-2xl md:text-4xl rubik-wet-paint-regular-font text-cyan-300 font-extrabold">
+        <a
+          href="/"
+          className="btn btn-ghost text-2xl md:text-4xl rubik-wet-paint-regular-font text-cyan-300 font-extrabold"
+        >
           EmpowerHub
         </a>
       </div>

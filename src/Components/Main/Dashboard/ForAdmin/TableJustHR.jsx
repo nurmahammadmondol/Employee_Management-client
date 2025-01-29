@@ -2,7 +2,7 @@ import React from 'react';
 
 const TableJustHR = ({ HrData, fireEmployee, adjustSalary }) => {
   return (
-    <div className="overflow-x-auto">
+    <div className="w-full h-[500px] overflow-x-auto overflow-y-auto">
       <table className="table-auto w-full border-collapse border border-gray-300 mt-5">
         <thead>
           <tr className="bg-gray-100">
@@ -15,16 +15,16 @@ const TableJustHR = ({ HrData, fireEmployee, adjustSalary }) => {
           </tr>
         </thead>
         <tbody>
-          {HrData.map((employee, index) => (
-            <tr key={employee.id} className="hover:bg-gray-50">
+          {HrData?.map((employee, index) => (
+            <tr key={employee?.id} className="hover:bg-gray-50">
               <td className="border border-gray-300 py-2 text-center">
                 {index + 1}
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                {employee.Name}
+                {employee?.Name}
               </td>
               <td className="border border-gray-300 px-4 py-2 text-center">
-                {employee.designation || 'N/A'}
+                {employee?.designation || 'N/A'}
               </td>
 
               <td className="border border-gray-300 px-4 py-2 text-center">
@@ -46,7 +46,7 @@ const TableJustHR = ({ HrData, fireEmployee, adjustSalary }) => {
                     employee.dismiss &&
                     'opacity-50 bg-red-300 pointer-events-none cursor-not-allowed'
                   }`}
-                  onClick={() => adjustSalary(employee._id)}
+                  onClick={() => adjustSalary(employee?._id)}
                 >
                   Adjust Salary
                 </button>
