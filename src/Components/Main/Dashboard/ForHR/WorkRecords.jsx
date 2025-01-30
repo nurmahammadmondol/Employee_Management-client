@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import SuccessIcon from '../../../../assets/Icon/icons8-success-48.png';
+import { Helmet } from 'react-helmet';
 
 const WorkRecords = () => {
   const LoaderData = useLoaderData();
@@ -37,6 +38,9 @@ const WorkRecords = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>EmpowerHub || WorkRecords</title>
+      </Helmet>
       <div className="mb-5 md:mb-10">
         <h4 className="w-full text-xl md:text-2xl font-bold">
           All job records posted by employees are displayed on this page.

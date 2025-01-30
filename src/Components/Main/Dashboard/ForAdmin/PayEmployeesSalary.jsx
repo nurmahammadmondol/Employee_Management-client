@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import useAxiosSecuur from '../../../Axios/useAxiosSecuur';
 import Swal from 'sweetalert2';
 import SuccessIcon from '../../../../assets/Icon/icons8-success-48.png';
+import { Helmet } from 'react-helmet';
 
 const PayEmployeesSalary = () => {
   const AxiosSeccur = useAxiosSecuur();
@@ -75,6 +76,10 @@ const PayEmployeesSalary = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>EmpowerHub || PaySalary</title>
+      </Helmet>
+
       <h3 className="text-2xl md:text-4xl font-bold text-center mb-3 md:mb-5 flex justify-center items-center gap-3">
         Pay Employees Salary<i class="fa-solid fa-comment-dollar"></i>
       </h3>

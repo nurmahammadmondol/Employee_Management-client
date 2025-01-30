@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext, useEffect, useState } from 'react';
 import useAxiosSecuur from '../../../Axios/useAxiosSecuur';
 import { AuthContext } from '../../../../Provider/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const EmployeePaymentHistory = () => {
   const { User } = useContext(AuthContext);
@@ -26,6 +27,9 @@ const EmployeePaymentHistory = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>EmpowerHub || PaymentHistory</title>
+      </Helmet>
       <h5 className="text-center font-bold mb-5  text-gray-400 flex justify-center items-center gap-3">
         Your monthly salary payment history
         <i class="fa-solid fa-circle-dollar-to-slot text-lg"></i>

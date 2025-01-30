@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import useAxiosSecuur from '../../../../Axios/useAxiosSecuur';
 import { AuthContext } from '../../../../../Provider/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const HomeAdmin = () => {
   const { User } = useContext(AuthContext);
@@ -22,6 +23,9 @@ const HomeAdmin = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>EmpowerHub || Admin Home</title>
+      </Helmet>
       <div className="flex items-end gap-3 md:gap-10">
         <div className="w-4/12 md:w-3/12 border">
           <img className="w-full h-full" src={admin?.Photo} alt="Admin Photo" />

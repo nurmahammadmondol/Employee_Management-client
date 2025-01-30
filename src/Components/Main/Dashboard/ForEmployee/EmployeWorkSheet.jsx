@@ -6,6 +6,7 @@ import { AuthContext } from '../../../../Provider/AuthProvider';
 import useAxiosSecuur from '../../../Axios/useAxiosSecuur';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const EmployeWorkSheet = () => {
   const { User } = useContext(AuthContext);
@@ -137,6 +138,10 @@ const EmployeWorkSheet = () => {
   return (
     <>
       <div className="md:flex gap-14 min-h-screen">
+        <Helmet>
+          <title>EmpowerHub || Employee</title>
+        </Helmet>
+
         <div className="w-full md:w-1/3 border">
           {/* Form */}
           <form

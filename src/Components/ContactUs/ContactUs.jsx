@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ContactUsBGImage from '../../assets/Photo/bgContactUS.jpg';
+import { Helmet } from 'react-helmet';
 // import { Helmet } from 'react-helmet';
 
 const ContactUs = () => {
@@ -15,9 +16,9 @@ const ContactUs = () => {
       }}
     >
       <div>
-        {/* <Helmet>
-          <title> || ContactUs</title>
-        </Helmet> */}
+        <Helmet>
+          <title>EmpowerHub || ContactUs</title>
+        </Helmet>
       </div>
       {/* Overlay div */}
       <div

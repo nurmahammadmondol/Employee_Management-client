@@ -24,6 +24,7 @@
     "react-countup": "^6.5.3",
     "react-datepicker": "^7.6.0",
     "react-dom": "^18.3.1",
+    "react-helmet": "^6.1.0",
     "react-hook-form": "^7.54.2",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^7.1.3",

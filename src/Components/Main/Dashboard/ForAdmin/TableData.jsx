@@ -1,8 +1,12 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 const TableData = ({ employees, makeHR, fireEmployee, adjustSalary }) => {
   return (
     <div className="w-full h-[500px] overflow-x-auto overflow-y-auto">
+      <Helmet>
+        <title>EmpowerHub || AllEmployee</title>
+      </Helmet>
       <table className="table-auto w-full border-collapse border border-gray-300 mt-5">
         <thead>
           <tr className="bg-gray-100">

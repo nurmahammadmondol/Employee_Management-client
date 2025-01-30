@@ -1,11 +1,16 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../../Provider/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const HomeHR = () => {
   const { User, userData } = useContext(AuthContext);
   //  console.log(User);
   return (
     <div>
+      <Helmet>
+        <title>EmpowerHub || Hr Home</title>
+      </Helmet>
+
       <h4 className="text-cyan-800  border-b-2 border-black font-bold text-lg  mb-5">
         My Profile
       </h4>

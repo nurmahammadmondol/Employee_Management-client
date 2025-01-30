@@ -35,7 +35,7 @@ const Footer = () => {
       <div className="bg-neutral text-neutral-content pb-2">
         <h4 className="text-sm text-center rancho-regular">
           © Created by Nur Mahammad Mondol Robiul. All right reserved
-          @EmpowerHub System 2024
+          @EmpowerHub System 2025
         </h4>
       </div>
     </div>

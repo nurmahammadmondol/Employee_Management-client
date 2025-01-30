@@ -8,6 +8,7 @@ import { AuthContext } from '../../../../Provider/AuthProvider';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAxiosSecuur from '../../../Axios/useAxiosSecuur';
+import { Helmet } from 'react-helmet';
 
 const EmployeeList = () => {
   const { AllUser } = useContext(AuthContext); // Fetching all user data from context
@@ -202,6 +203,10 @@ const EmployeeList = () => {
 
   return (
     <div className="w-full ">
+      <Helmet>
+        <title>EmpowerHub || EmployeeList</title>
+      </Helmet>
+
       <h5 className="text-center text-2xl font-semibold mb-5 lobster-regular-font">
         Employee List
       </h5>

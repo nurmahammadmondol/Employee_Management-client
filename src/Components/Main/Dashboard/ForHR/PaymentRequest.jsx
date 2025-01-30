@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useLoaderData } from 'react-router-dom';
 
 const PaymentRequest = () => {
@@ -8,6 +9,9 @@ const PaymentRequest = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>EmpowerHub || PaymentRequest</title>
+      </Helmet>
       <h5 className="text-center text-2xl font-semibold mb-5 lobster-regular-font">
         All Payment Request
       </h5>

@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { Helmet } from 'react-helmet';
 
 // Chart.js-এর প্রয়োজনীয় ডিপেনডেন্সি রেজিস্টার করা
 ChartJS.register(
@@ -76,6 +77,10 @@ const EmployeeDetails = () => {
 
   return (
     <div className="">
+      <Helmet>
+        <title>EmpowerHub || Employee Details</title>
+      </Helmet>
+
       <h5 className="text-center md:text-2xl font-semibold mb-5  md:mb-10 lobster-regular-font border-b-2">
         Employee Details
       </h5>

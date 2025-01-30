@@ -7,6 +7,7 @@ import TableJustEmployees from './TableJustEmployees';
 import useAxiosSecuur from '../../../Axios/useAxiosSecuur';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const AllEmployeeList = () => {
   const AxiosSeccur = useAxiosSecuur();
