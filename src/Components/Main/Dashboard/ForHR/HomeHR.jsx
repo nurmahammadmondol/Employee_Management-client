@@ -1,55 +1,197 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../../../Provider/AuthProvider';
 import { Helmet } from 'react-helmet';
 
+import { FaListCheck, FaMoneyCheckDollar, FaUsers } from 'react-icons/fa6';
+import { AuthContext } from '../../../../Provider/AuthProvider';
+import { useContext } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { useState } from 'react';
+
 const HomeHR = () => {
-  const { User, userData } = useContext(AuthContext);
-  //  console.log(User);
+  const { AllUser } = useContext(AuthContext);
+  const [workData, setWorkData] = useState([]);
+  const [paymentData, setPaymentData] = useState([]);
+  const [sumAllSalary, setSumAllSalary] = useState(null);
+  const percentage = 5;
+
+  // console.log(paymentData);
+
+  const Projects = workData.length;
+  const AllEmplayee = AllUser.length;
+
+  const Emplayeepercentage = (AllEmplayee / 50) * 100;
+  const Projectspercentage = (Projects / 50) * 100;
+  const paymentSuccesspercentage = (sumAllSalary / 5000) * 100;
+  // console.log(paymentSuccesspercentage, sumAllSalary);
+
+  useEffect(() => {
+    axios
+      .get('https://employee-management-server-two-eight.vercel.app/WorkSheet')
+      .then(res => {
+        // console.log(res.data);
+        setWorkData(res.data);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(
+        'https://employee-management-server-two-eight.vercel.app/Payment_Request'
+      )
+      .then(res => {
+        const requestSuccess = res.data.filter(data => data.request);
+
+        const salaryArray = requestSuccess.map(item => Number(item.salary));
+
+        const sumSalary = salaryArray.reduce((acc, curr) => acc + curr, 0);
+
+        // console.log(salaryArray);
+        setSumAllSalary(sumSalary);
+        setPaymentData(salaryArray);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  }, []);
+
   return (
     <div>
       <Helmet>
-        <title>EmpowerHub || Hr Home</title>
+        <title>Hr Dashboard || EmpowerHub</title>
       </Helmet>
 
-      <h4 className="text-cyan-800  border-b-2 border-black font-bold text-lg  mb-5">
-        My Profile
-      </h4>
-      <div className="flex items-center gap-5 md:gap-16 ">
-        <div className="w-1/3 h-[100px] md:h-[350px] border-2 rounded-full">
-          <img
-            className="w-full h-full rounded-full"
-            src={userData?.Photo}
-            alt=""
-          />
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="relative border h-40 w-full p-4 flex flex-col justify-between bg-gradient-to-r from-[#1e90ff] via-[#00bfff] to-[#4682b4] rounded-md">
+          {/* Card Content and Progress Bar */}
+          <div className="flex flex-col justify-start h-full">
+            {/* Card Content */}
+            <div className="flex flex-col justify-between h-full">
+              <h6 className="text-white text-2xl font-bold">Projects</h6>
+              <div className="flex justify-between items-center">
+                <p className="text-white text-xl font-bold flex items-center gap-1">
+                  <FaListCheck className="text-xs" />
+                  {Projects}
+                </p>
+                <small className="text-white">
+                  {Projectspercentage.toFixed(2)}%
+                </small>
+              </div>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="w-full bg-gray-300 rounded-full h-1 mt-2">
+              <div
+                className={`h-1 rounded-full ${
+                  Projectspercentage > 50 ? 'bg-green-500' : 'bg-red-500'
+                }`}
+                style={{ width: `${Math.min(Projectspercentage, 100)}%` }}
+              />
+            </div>
+          </div>
+
+          {/* Icon as Background */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-20">
+            <FaListCheck className="text-7xl" />
+          </div>
         </div>
 
-        <div className="w-2/3 text-xs md:text-lg space-y-3 md:space-y-0 grid grid-cols-2 md:grid-cols-1 md:gap-5 ">
-          <div className="">
-            <p className="text-2xl md:text-4 lg:text-5xl font-semibold md:mb-3">
-              {userData?.Name}
-            </p>
+        <div className="relative border h-40 w-full p-4 flex flex-col justify-between bg-gradient-to-r from-[#ff7f50] via-[#ff6347] to-[#ff4500] rounded-md">
+          {/* Card Content and Progress Bar */}
+          <div className="flex flex-col justify-start h-full">
+            {/* Card Content */}
+            <div className="flex flex-col justify-between h-full">
+              <h6 className="text-white text-2xl font-bold">New Employee</h6>
+              <div className="flex justify-between items-center">
+                <p className="text-white text-xl font-bold flex items-center gap-1">
+                  <FaUsers className="text-lg" />
+                  {AllEmplayee}
+                </p>
+                <small className="text-white">
+                  {Emplayeepercentage.toFixed(2)}%
+                </small>
+              </div>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="w-full bg-gray-300 rounded-full h-1 mt-2">
+              <div
+                className={`h-1 rounded-full ${
+                  Emplayeepercentage > 25 ? 'bg-green-500' : 'bg-red-500'
+                }`}
+                style={{ width: `${Math.min(Emplayeepercentage, 100)}%` }}
+              />
+            </div>
           </div>
 
-          <div>
-            <p className="text-gray-400 text-xs">Email</p>
-            <p>{userData?.Email}</p>
+          {/* Icon as Background */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-20">
+            <FaUsers className="text-7xl" />
+          </div>
+        </div>
+
+        <div className="relative border h-40 w-full p-4 flex flex-col justify-between bg-gradient-to-r from-[#4caf50] via-[#388e3c] to-[#6aa84f] rounded-md">
+          {/* Card Content and Progress Bar */}
+          <div className="flex flex-col justify-start h-full">
+            {/* Card Content */}
+            <div className="flex flex-col justify-between h-full">
+              <h6 className="text-white text-2xl font-bold">Running Tasks</h6>
+              <div className="flex justify-between items-center">
+                <p className="text-white text-xl font-bold">125</p>
+                <small className="text-white">{percentage.toFixed(2)}%</small>
+              </div>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="w-full bg-gray-300 rounded-full h-1 mt-2">
+              <div
+                className={`h-1 rounded-full ${
+                  percentage > 50 ? 'bg-green-500' : 'bg-red-500'
+                }`}
+                style={{ width: `${percentage}%` }}
+              />
+            </div>
           </div>
 
-          <div>
-            <p>
-              <span className="text-gray-400 ">ID : </span>
-              {userData?._id}
-            </p>
+          {/* Icon as Background */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-20">
+            <FaListCheck className="text-7xl" />
+          </div>
+        </div>
+
+        <div className="relative border h-40 w-full p-4 flex flex-col justify-between bg-gradient-to-r from-[#A64D79] via-[#D81B60] to-[#8E3B46] rounded-md">
+          {/* Card Content and Progress Bar */}
+          <div className="flex flex-col justify-start h-full">
+            {/* Card Content */}
+            <div className="flex flex-col justify-between h-full">
+              <h6 className="text-white text-2xl font-bold">Salary</h6>
+              <div className="flex justify-between items-center">
+                <p className="text-white text-xl font-bold flex items-center gap-1">
+                  <FaMoneyCheckDollar className="text-lg" />
+                  {sumAllSalary}
+                </p>
+                <small className="text-white">
+                  {paymentSuccesspercentage.toFixed(2)}%
+                </small>
+              </div>
+            </div>
+
+            {/* Progress Bar */}
+            <div className="w-full bg-gray-300 rounded-full h-1 mt-2">
+              <div
+                className={`h-1 rounded-full ${
+                  paymentSuccesspercentage > 100 ? 'bg-green-500' : 'bg-red-500'
+                }`}
+                style={{ width: `${Math.min(paymentSuccesspercentage, 100)}%` }}
+              />
+            </div>
           </div>
 
-          <div>
-            <p className="text-gray-400 text-xs">Role</p>
-            <p>{userData?.UserRole}</p>
-          </div>
-
-          <div>
-            <p className="text-gray-400 text-xs">Bank Account</p>
-            <p>{userData?.BankAccount || 'N/A'}</p>
+          {/* Icon as Background */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-20">
+            <FaMoneyCheckDollar className="text-7xl" />
           </div>
         </div>
       </div>

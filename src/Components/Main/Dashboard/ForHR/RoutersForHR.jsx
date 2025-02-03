@@ -1,11 +1,8 @@
-import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { AuthContext } from '../../../../Provider/AuthProvider';
+
 import Logo from '../../../../assets/Photo/EmpowerHubLogo.png';
 
 const RoutersForHR = () => {
-  const { User } = useContext(AuthContext);
-
   return (
     <div>
       <div className="py-11 bg-cyan-50"></div>
@@ -15,9 +12,10 @@ const RoutersForHR = () => {
             <div>
               <img className="w-full" src={Logo} alt="" />
             </div>
+
             <Link to="/DashboardHR/HomeHR">
               <button className="btn w-full text-cyan-700  flex items-center gap-1">
-                <i class="fa-solid fa-house"></i>Home
+                <i class="fa-solid fa-desktop"></i> Dashboard
               </button>
             </Link>
 
