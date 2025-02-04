@@ -15,7 +15,7 @@ const RouterForAdmin = () => {
 
             <Link to="/DashboardAdmin/HomeAdmin">
               <button className="btn w-full text-cyan-700  flex items-center gap-1">
-                <i class="fa-solid fa-house"></i>Home
+                <i class="fa-solid fa-desktop mr-1"></i>Admin Dashboard
               </button>
             </Link>
 

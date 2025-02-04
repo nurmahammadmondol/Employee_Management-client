@@ -3,6 +3,7 @@ import useAxiosSecuur from '../../../Axios/useAxiosSecuur';
 import Swal from 'sweetalert2';
 import SuccessIcon from '../../../../assets/Icon/icons8-success-48.png';
 import { Helmet } from 'react-helmet';
+import { MdCancel } from 'react-icons/md';
 
 const PayEmployeesSalary = () => {
   const AxiosSeccur = useAxiosSecuur();
@@ -31,29 +32,30 @@ const PayEmployeesSalary = () => {
 
   const handlePay = (ID, employeeData) => {
     Swal.fire({
-      title: 'Do you want to pay the employee ?',
+      title: 'Do you want to pay the employee?',
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: 'Pay Now',
       confirmButtonColor: '#89CFF0',
-      denyButtonText: `Reject`,
+      denyButtonText: 'Reject',
     }).then(result => {
       if (result.isConfirmed) {
+        // যদি Pay করা হয়
         const addNowDate = {
           approvedTime: customDate,
           request: true,
-          salary: employeeData.salary, // Existing salary
+          salary: employeeData.salary,
         };
 
-        AxiosSeccur.patch(`Payment_Request/${ID}`, addNowDate) // Send only relevant fields
+        AxiosSeccur.patch(`Payment_Request/${ID}`, addNowDate)
           .then(res => {
             console.log(res.data);
             refetch();
 
             if (res.data.modifiedCount > 0) {
               Swal.fire({
-                title: 'Payment!',
-                text: `Salary sent successfully.`,
+                title: 'Payment Successful!',
+                text: 'Salary sent successfully.',
                 icon: 'success',
                 confirmButtonText: 'Okay',
                 confirmButtonColor: '#89CFF0',
@@ -64,12 +66,31 @@ const PayEmployeesSalary = () => {
             console.error(error);
           });
       } else if (result.isDenied) {
-        Swal.fire({
-          title: 'I will not pay.',
-          showDenyButton: true,
-          confirmButtonText: 'Reject',
-          confirmButtonColor: '#89CFF0',
-        });
+        // যদি Reject করা হয়
+        const rejectDate = {
+          approvedTime: customDate,
+          request: 'reject',
+          salary: employeeData.salary,
+        };
+
+        AxiosSeccur.patch(`Payment_Request/${ID}`, rejectDate)
+          .then(res => {
+            console.log(res.data);
+            refetch();
+
+            if (res.data.modifiedCount > 0) {
+              Swal.fire({
+                title: 'Payment Rejected!',
+                text: 'Salary rejection successful.',
+                icon: 'error',
+                confirmButtonText: 'Okay',
+                confirmButtonColor: '#89CFF0',
+              });
+            }
+          })
+          .catch(error => {
+            console.error(error);
+          });
       }
     });
   };
@@ -124,7 +145,8 @@ const PayEmployeesSalary = () => {
                 <td>{item?.date}</td>
                 <td>{item?.approvedTime || '_ _ _'}</td>
                 <td>
-                  {item?.request ? (
+                  {item?.request === true ? (
+                    // Approved হলে Success মেসেজ দেখাবে
                     <div className="flex gap-1 justify-center items-center">
                       <img
                         className="w-4"
@@ -133,10 +155,17 @@ const PayEmployeesSalary = () => {
                       />
                       <span className="text-green-500">Payment success</span>
                     </div>
+                  ) : item?.request === 'reject' ? (
+                    // Rejected হলে Rejected মেসেজ দেখাবে
+                    <div className="flex gap-1 justify-center items-center">
+                      <MdCancel className="w-4 h-4 text-red-500" />
+                      <span className="text-red-500">Payment Rejected</span>
+                    </div>
                   ) : (
+                    // Pending হলে Pay বাটন দেখাবে
                     <button
                       onClick={() => handlePay(item?._id, item)}
-                      className={`btn w-full btn-sm btn-outline text-cyan-600 `}
+                      className="btn w-full btn-sm btn-outline text-cyan-600"
                     >
                       $ Pay
                     </button>

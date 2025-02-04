@@ -14,7 +14,9 @@ const EmployeePaymentHistory = () => {
       .then(res => {
         console.log(res.data);
         const myRequest = res.data
-          .filter(myData => myData.email === User.email)
+          .filter(
+            myData => myData.email === User.email && myData.request === true
+          ) // Approved ফিল্টার
           .reverse();
         setpaymentRequests(myRequest);
       })

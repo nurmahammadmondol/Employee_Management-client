@@ -5,8 +5,8 @@ import { AuthContext } from '../../Provider/AuthProvider';
 const Navbar = () => {
   const { User, userData, LogOutUser } = useContext(AuthContext);
   const Links = (
-    <div className="  md:text-xl font-bold flex items-center gap-4 md:gap-7">
-      <NavLink>Home</NavLink>
+    <div className="  md:text-xl font-semibold flex items-center gap-4 md:gap-7">
+      <NavLink to="/">Home</NavLink>
 
       {!User && <NavLink to="/LoginPage">Dashboard </NavLink>}
 
@@ -26,7 +26,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar fixed z-10 bg-black bg-opacity-50 text-white py-5">
+    <nav className="navbar fixed z-10 bg-black bg-opacity-50 text-white py-5">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -89,7 +89,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

@@ -16,11 +16,12 @@ import WorkRecords from '../Components/Main/Dashboard/ForHR/WorkRecords';
 import RouterForAdmin from '../Components/Main/Dashboard/ForAdmin/RoutersForAdmin/RouterForAdmin';
 import AllEmployeeList from '../Components/Main/Dashboard/ForAdmin/AllEmployeeList';
 import PayEmployeesSalary from '../Components/Main/Dashboard/ForAdmin/PayEmployeesSalary';
-import HomeAdmin from '../Components/Main/Dashboard/ForAdmin/RoutersForAdmin/HomeAdmin';
+
 import ContactUs from '../Components/ContactUs/ContactUs';
 import AboutUs from '../Components/About/AboutUs';
 import PrivetRootInHR from '../PrivetRoot/PrivetRootInHR';
 import PrivetRootInAdmin from '../PrivetRoot/PrivetRootInAdmin';
+import HomeAdmin from '../Components/Main/Dashboard/ForAdmin/RoutersForAdmin/HomeAdmin';
 
 const Router = createBrowserRouter([
   {
@@ -126,7 +127,7 @@ const Router = createBrowserRouter([
             path: 'HomeAdmin',
             element: (
               <PrivetRootInAdmin>
-                <HomeAdmin></HomeAdmin>,
+                <HomeAdmin></HomeAdmin>
               </PrivetRootInAdmin>
             ),
           },

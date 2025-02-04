@@ -38,19 +38,25 @@ const PaymentRequest = () => {
                       <td>{request?.name}</td>
                       <td>{request?.date}</td>
                       <td>${request?.salary || '_ _ _'}</td>
-                      {request?.request ? (
+                      {request?.request === false ? (
                         <td>
-                          <span className="text-green-400  bg-green-50 border border-green-400 px-3 py-1 rounded-2xl">
-                            Approved
-                          </span>
-                        </td>
-                      ) : (
-                        <td>
-                          <span className="text-yellow-400 border border-yellow-400 bg-yellow-50 px-3 py-1 rounded-2xl ">
+                          <span className="text-yellow-400 border border-yellow-400 bg-yellow-50 px-3 py-1 rounded-2xl">
                             Pending...
                           </span>
                         </td>
-                      )}
+                      ) : request?.request === 'reject' ? (
+                        <td>
+                          <span className="text-red-400 bg-red-50 border border-red-400 px-4 py-1 rounded-2xl">
+                            Rejected
+                          </span>
+                        </td>
+                      ) : request?.request === true ? (
+                        <td>
+                          <span className="text-green-400 bg-green-50 border border-green-400 px-3 py-1 rounded-2xl">
+                            Approved
+                          </span>
+                        </td>
+                      ) : null}
                     </tr>
                   ))}
                 </>
