@@ -210,7 +210,7 @@ const EmployeeList = () => {
       <h5 className="text-center text-2xl font-semibold mb-5 lobster-regular-font">
         Employee List
       </h5>
-      <div className="overflow-x-auto">
+      <div className="w-full h-[500px] overflow-x-auto overflow-y-auto">
         <table className="w-full border-collapse border border-gray-300  ">
           <thead>
             {table.getHeaderGroups().map(headerGroup => (

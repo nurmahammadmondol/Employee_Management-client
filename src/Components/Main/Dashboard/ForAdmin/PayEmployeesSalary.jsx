@@ -105,7 +105,7 @@ const PayEmployeesSalary = () => {
         Pay Employees Salary<i class="fa-solid fa-comment-dollar"></i>
       </h3>
 
-      <div className="overflow-x-auto">
+      <div className="w-full h-[500px] overflow-x-auto overflow-y-auto">
         <table className="table border">
           {/* head */}
           <thead>

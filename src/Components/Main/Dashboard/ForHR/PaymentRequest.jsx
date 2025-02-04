@@ -17,7 +17,7 @@ const PaymentRequest = () => {
       </h5>
 
       <div className="w-full">
-        <div className="overflow-x-auto">
+        <div className="w-full h-[500px] overflow-x-auto overflow-y-auto">
           <table className="table border">
             {/* head */}
             <thead className="bg-gray-200 border-gray-300 ">
