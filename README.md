@@ -48,24 +48,38 @@ EmpowerHub is a comprehensive employee management system designed to streamline 
 
 ## 📂 Folder Structure
 ```
-📦 EmpowerHub
- ┣ 📂 client (Frontend)
- ┃ ┣ 📂 src
- ┃ ┃ ┣ 📂 components
- ┃ ┃ ┣ 📂 pages
- ┃ ┃ ┣ 📂 hooks
- ┃ ┃ ┣ 📂 utils
- ┃ ┣ 📜 package.json
- ┃ ┣ 📜 tailwind.config.js
- ┣ 📂 server (Backend)
- ┃ ┣ 📂 controllers
- ┃ ┣ 📂 models
- ┃ ┣ 📂 routes
- ┃ ┣ 📂 middlewares
- ┃ ┣ 📜 server.js
- ┃ ┣ 📜 .env (Environment Variables)
- ┃ ┣ 📜 package.json
-```
+/Employee_Management
+│── /node_modules
+│── /public
+│── /src
+│   │── /assets
+│   │── /Components
+│   │   │── /About
+│   │   │── /Axios
+│   │   │── /ContactUs
+│   │   │── /Firebase.config
+│   │   │── /Footer
+│   │   │── /Header
+│   │   │── /Home
+│   │── /Main
+│   │   │── /Authentication
+│   │   │── /Dashboard
+│   │   │   │── /ForAdmin
+│   │   │   │── /ForEmployee
+│   │   │   │── /ForHR
+│   │   │── /LatestNews
+│   │   │── /OurExpertise
+│   │   │── /OurProcesses
+│   │   │── /StatisticalSection
+│   │   │── /Title
+│   │── /PrivetRoot
+│   │── /Provider
+│   │── /Router
+│   │── App.css
+│   │── App.js
+│── package.json
+│── README.md
+
 
 ---
 
@@ -92,20 +106,12 @@ EmpowerHub is a comprehensive employee management system designed to streamline 
 
 ---
 
-## 🔒 Environment Variables
-Create a `.env` file in the server root directory and add the following:
-```
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-FIREBASE_API_KEY=your_firebase_api_key
-FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
-```
 
 ---
 
 ## 🏆 Contributions & Feedback
 Feel free to fork this repository and contribute by submitting pull requests. For feedback or issues, open an issue on GitHub!
 
-🚀 Built with ❤️ by [Nur Mahammad Mondol Robiul]
+🚀 Built with ❤️ by Nur Mahammad Mondol Robiul
 
 
