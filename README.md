@@ -81,28 +81,6 @@ EmpowerHub is a comprehensive employee management system designed to streamline 
 │── README.md
 
 
----
-
-## 🔧 Installation & Setup
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-repo/empowerhub.git
-   ```
-2. Navigate to the project folder:
-   ```bash
-   cd empowerhub
-   ```
-3. Install dependencies for both client and server:
-   ```bash
-   cd client && npm install
-   cd ../server && npm install
-   ```
-4. Configure environment variables in `.env` files.
-5. Start the development servers:
-   ```bash
-   cd client && npm start
-   cd ../server && npm run dev
-   ```
 
 ---
 
