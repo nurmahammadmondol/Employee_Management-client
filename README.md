@@ -8,7 +8,8 @@ EmpowerHub is a comprehensive employee management system designed to streamline 
 
 ---
 
-<img src="https://raw.githubusercontent.com/your-username/repository-name/main/assets/image.png" alt="Dashboard Preview" width="800"/>
+![Dashboard Preview](https://raw.githubusercontent.com/your-username/repository-name/main/image.png)
+
 
 ---
 
