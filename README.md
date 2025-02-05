@@ -85,7 +85,7 @@ EmpowerHub is a comprehensive employee management system designed to streamline 
 ---
 
 
----
+
 
 ## 🏆 Contributions & Feedback
 Feel free to fork this repository and contribute by submitting pull requests. For feedback or issues, open an issue on GitHub!
