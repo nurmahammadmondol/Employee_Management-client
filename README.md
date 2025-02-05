@@ -11,6 +11,10 @@ EmpowerHub is a comprehensive employee management system designed to streamline 
 ## 🔑 Admin Credentials
 - **Email:** admin@empowerhub.com
 - **Password:** Admin123!
+- 
+## 🔑 HR Credentials
+- **Email:** hr@empowerhub.com
+- **Password:** Hr123!
 
 ---
 
