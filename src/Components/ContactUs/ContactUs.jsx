@@ -63,9 +63,7 @@ const ContactUs = () => {
               </div>
               <div>
                 <h5 className="text-xl font-bold">Email</h5>
-                <p className="text-sm text-gray-200">
-                  proplayaccessories@gmail.com
-                </p>
+                <p className="text-sm text-gray-200">empowerhub@gmail.com</p>
               </div>
             </div>
           </div>
