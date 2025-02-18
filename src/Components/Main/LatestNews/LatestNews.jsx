@@ -8,13 +8,13 @@ const LatestNews = () => {
 
   const LatestThreeNews = Data.slice(0, 3);
   const foreNumberNews = Data.slice(4, 5);
-  console.log(foreNumberNews);
+  // console.log(foreNumberNews);
 
   useEffect(() => {
     axios(
       'https://employee-management-server-two-eight.vercel.app/latest-news'
     ).then(res => {
-      // console.log(res.data);
+      // // console.log(res.data);
       setData(res.data);
     });
   }, []);

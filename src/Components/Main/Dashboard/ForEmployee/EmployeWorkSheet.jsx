@@ -52,7 +52,7 @@ const EmployeWorkSheet = () => {
     if (tasks) {
       PublicAxios.post('/WorkSheet', EmployeWorkSheet)
         .then(res => {
-          console.log(res.data);
+          // console.log(res.data);
           refetch();
 
           // ফর্ম রিসেট করা
@@ -60,7 +60,7 @@ const EmployeWorkSheet = () => {
           setTasks(null);
         })
         .catch(error => {
-          console.log(error);
+          // console.log(error);
         });
     } else {
       alert('Error: Bad Request');
@@ -87,11 +87,11 @@ const EmployeWorkSheet = () => {
     const Tarks = form.Tasks.value;
 
     const UpdateData = { tasks: Tarks, WorkingTime, startDate };
-    console.log(ID);
-    console.log(UpdateData);
+    // console.log(ID);
+    // console.log(UpdateData);
     AxiosSecuur.patch(`/WorkSheet/${ID}`, UpdateData)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         refetch();
 
         if (res.data.modifiedCount > 0) {
@@ -99,12 +99,12 @@ const EmployeWorkSheet = () => {
         }
       })
       .catch(error => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
   const handleDeleteTasks = ID => {
-    console.log('delete', ID);
+    // console.log('delete', ID);
 
     Swal.fire({
       title: 'Are you sure?',
@@ -118,7 +118,7 @@ const EmployeWorkSheet = () => {
       if (result.isConfirmed) {
         AxiosSecuur.delete(`/WorkSheet/${ID}`)
           .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             refetch();
             if (res.data.deletedCount > 0) {
               Swal.fire({
@@ -129,7 +129,7 @@ const EmployeWorkSheet = () => {
             }
           })
           .catch(error => {
-            console.log(error.message);
+            // console.log(error.message);
           });
       }
     });

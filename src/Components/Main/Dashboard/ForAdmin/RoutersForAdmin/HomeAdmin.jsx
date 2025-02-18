@@ -10,16 +10,17 @@ import { AuthContext } from '../../../../../Provider/AuthProvider';
 import SalaryChart from '../../ForHR/SalaryChart';
 import SalaryMounthly from './SalaryMounthly';
 import { GrTasks } from 'react-icons/gr';
+import UserProfile from '../../UserProfile/UserProfile';
 
 const HomeAdmin = () => {
-  const { AllUser } = useContext(AuthContext);
+  const { AllUser, userData } = useContext(AuthContext);
   const [workData, setWorkData] = useState([]);
   const [Data, setData] = useState([]);
   const [paymentData, setPaymentData] = useState([]);
   const [sumAllSalary, setSumAllSalary] = useState(null);
   const percentage = 35;
 
-  // console.log(paymentData);
+  // // console.log(paymentData);
 
   const Projects = workData.length;
   const AllEmplayee = AllUser.length;
@@ -27,17 +28,17 @@ const HomeAdmin = () => {
   const Emplayeepercentage = (AllEmplayee / 50) * 100;
   const Projectspercentage = (Projects / 50) * 100;
   const paymentSuccesspercentage = (sumAllSalary / 5000) * 100;
-  // console.log(paymentSuccesspercentage, sumAllSalary);
+  // // console.log(paymentSuccesspercentage, sumAllSalary);
 
   useEffect(() => {
     axios
       .get('https://employee-management-server-two-eight.vercel.app/WorkSheet')
       .then(res => {
-        // console.log(res.data);
+        // // console.log(res.data);
         setWorkData(res.data);
       })
       .catch(error => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   }, []);
 
@@ -47,7 +48,7 @@ const HomeAdmin = () => {
         'https://employee-management-server-two-eight.vercel.app/Payment_Request'
       )
       .then(res => {
-        // console.log(res.data);
+        // // console.log(res.data);
         const requestSuccess = res.data.filter(data => data.request === true);
         setData(requestSuccess);
 
@@ -59,14 +60,18 @@ const HomeAdmin = () => {
         setPaymentData(salaryArray);
       })
       .catch(error => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   }, []);
 
-  console.log(paymentData);
+  console.log(userData);
 
   return (
     <div>
+      <div>
+        <UserProfile userData={userData}></UserProfile>
+      </div>
+
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
         <div className="relative border h-40 w-full p-4 flex flex-col justify-between bg-gradient-to-r from-[#1e90ff] via-[#00bfff] to-[#4682b4] rounded-md">
           {/* Card Content and Progress Bar */}

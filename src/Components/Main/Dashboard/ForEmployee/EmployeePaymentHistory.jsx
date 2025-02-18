@@ -12,7 +12,7 @@ const EmployeePaymentHistory = () => {
   useEffect(() => {
     AxiosSeccur.get('/Payment_Request')
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         const myRequest = res.data
           .filter(
             myData => myData.email === User.email && myData.request === true
@@ -21,11 +21,11 @@ const EmployeePaymentHistory = () => {
         setpaymentRequests(myRequest);
       })
       .catch(error => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   }, []);
 
-  console.log(paymentRequests);
+  // console.log(paymentRequests);
 
   return (
     <div>

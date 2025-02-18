@@ -16,7 +16,7 @@ const NewsDetails = () => {
     newsImage,
     description,
   } = LoderData;
-  console.log(LoderData);
+  // console.log(LoderData);
 
   const [Data, setData] = useState([]);
 
@@ -24,7 +24,7 @@ const NewsDetails = () => {
     axios(
       'https://employee-management-server-two-eight.vercel.app/latest-news'
     ).then(res => {
-      // console.log(res.data);
+      // // console.log(res.data);
       setData(res.data);
     });
   }, []);

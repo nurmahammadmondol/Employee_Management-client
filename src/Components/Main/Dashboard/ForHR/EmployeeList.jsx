@@ -14,10 +14,10 @@ const EmployeeList = () => {
   const { AllUser } = useContext(AuthContext); // Fetching all user data from context
   const AxiosSeccur = useAxiosSecuur();
   const [data, setData] = useState([]);
-  // console.log(AllUser);
+  // // console.log(AllUser);
 
   const handleSelaryPay = ID => {
-    console.log('pay success', ID);
+    // console.log('pay success', ID);
     Swal.fire({
       title: 'Payment Request',
       text: "Provide the details for the employee's payment request.",
@@ -61,7 +61,7 @@ const EmployeeList = () => {
         if (salary && date) {
           AxiosSeccur.post('/Payment_Request', Payment_RequestUser)
             .then(res => {
-              console.log(res.data);
+              // console.log(res.data);
               if (res.data.insertedId) {
                 Swal.fire({
                   title: 'Request Sent!',
@@ -73,7 +73,7 @@ const EmployeeList = () => {
               }
             })
             .catch(error => {
-              console.log(error.messsage);
+              // console.log(error.messsage);
             });
         } else {
           Swal.fire({
@@ -87,14 +87,14 @@ const EmployeeList = () => {
     });
   };
   const handleEmplayeeDetailss = ID => {
-    console.log('Details success open', ID);
+    // console.log('Details success open', ID);
   };
 
   // Sync data from AuthContext and filter Employee roles
   useEffect(() => {
     if (AllUser && Array.isArray(AllUser)) {
       const employees = AllUser.filter(user => user.UserRole === 'Employee'); // Filter employees
-      console.log(employees);
+      // console.log(employees);
       const formattedData = employees.map((user, index) => ({
         id: user._id || index + 1, // Unique identifier
         name: user.Name || 'Unknown', // Use 'Name' from context data
@@ -105,7 +105,7 @@ const EmployeeList = () => {
         bankAccount: user.BankAccount || 'N/A', // Bank Account information
         salary: user.Salary || 0, // Salary field (if applicable)
       }));
-      // console.log(formattedData);
+      // // console.log(formattedData);
 
       setData(formattedData);
     }
@@ -120,7 +120,7 @@ const EmployeeList = () => {
     setData(updatedData);
 
     // Optional: Update the verified status in the database
-    console.log('Updated Employee Data:', updatedData);
+    // console.log('Updated Employee Data:', updatedData);
   };
 
   const columns = [

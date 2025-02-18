@@ -20,7 +20,7 @@ const LoginPage = () => {
 
     LoginWithEmailPassword(Email, Password)
       .then(result => {
-        console.log(result.user);
+        // console.log(result.user);
 
         Swal.fire({
           position: 'top-end',
@@ -32,7 +32,7 @@ const LoginPage = () => {
         navigate('/');
       })
       .catch(error => {
-        console.log(error.message);
+        // console.log(error.message);
         Swal.fire({
           position: 'top-end',
           icon: 'error',
@@ -46,7 +46,7 @@ const LoginPage = () => {
   const handleGoogleLogin = () => {
     CreateUserGoogle()
       .then(result => {
-        console.log(result.user);
+        // console.log(result.user);
 
         Swal.fire({
           position: 'top-end',
@@ -66,14 +66,14 @@ const LoginPage = () => {
 
         PublicAxios.post('/User', UserInfo)
           .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
           })
           .catch(error => {
-            console.log(error.message);
+            // console.log(error.message);
           });
       })
       .catch(error => {
-        console.log(error.message);
+        // console.log(error.message);
         Swal.fire({
           position: 'top-end',
           icon: 'error',

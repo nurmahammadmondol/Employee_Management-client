@@ -1,4 +1,3 @@
-import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import Logo from '../../../../../assets/Photo/EmpowerHubLogo.png';
 

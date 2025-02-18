@@ -17,7 +17,7 @@ const HomeHR = () => {
   const [sumAllSalary, setSumAllSalary] = useState(null);
   const percentage = 5;
 
-  // console.log(paymentData);
+  // // console.log(paymentData);
 
   const Projects = workData.length;
   const AllEmplayee = AllUser.length;
@@ -25,17 +25,17 @@ const HomeHR = () => {
   const Emplayeepercentage = (AllEmplayee / 50) * 100;
   const Projectspercentage = (Projects / 50) * 100;
   const paymentSuccesspercentage = (sumAllSalary / 5000) * 100;
-  // console.log(paymentSuccesspercentage, sumAllSalary);
+  // // console.log(paymentSuccesspercentage, sumAllSalary);
 
   useEffect(() => {
     axios
       .get('https://employee-management-server-two-eight.vercel.app/WorkSheet')
       .then(res => {
-        // console.log(res.data);
+        // // console.log(res.data);
         setWorkData(res.data);
       })
       .catch(error => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   }, []);
 
@@ -45,7 +45,7 @@ const HomeHR = () => {
         'https://employee-management-server-two-eight.vercel.app/Payment_Request'
       )
       .then(res => {
-        // console.log(res.data);
+        // // console.log(res.data);
         const requestSuccess = res.data.filter(data => data.request);
         setData(requestSuccess);
 
@@ -57,11 +57,11 @@ const HomeHR = () => {
         setPaymentData(salaryArray);
       })
       .catch(error => {
-        console.log(error.message);
+        // console.log(error.message);
       });
   }, []);
 
-  // console.log(paymentData);
+  // // console.log(paymentData);
 
   return (
     <div>

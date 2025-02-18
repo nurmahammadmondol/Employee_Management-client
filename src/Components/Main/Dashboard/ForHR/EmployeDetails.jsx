@@ -46,7 +46,7 @@ const EmployeeDetails = () => {
         );
         const data = await response.json();
         setEmployee(data);
-        // console.log(data);
+        // // console.log(data);
 
         // Chart-এর জন্য ডেটা তৈরি করো
         setChartData({

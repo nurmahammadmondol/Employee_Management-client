@@ -18,7 +18,7 @@ const PayEmployeesSalary = () => {
     queryFn: async () => {
       const res = await AxiosSeccur.get('/Payment_Request');
       const reversedData = res.data.reverse(); // অ্যারের এলিমেন্টগুলোর ক্রম উল্টো করুন
-      // console.log(reversedData);
+      // // console.log(reversedData);
       return reversedData;
     },
   });
@@ -49,7 +49,7 @@ const PayEmployeesSalary = () => {
 
         AxiosSeccur.patch(`Payment_Request/${ID}`, addNowDate)
           .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             refetch();
 
             if (res.data.modifiedCount > 0) {
@@ -75,7 +75,7 @@ const PayEmployeesSalary = () => {
 
         AxiosSeccur.patch(`Payment_Request/${ID}`, rejectDate)
           .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             refetch();
 
             if (res.data.modifiedCount > 0) {

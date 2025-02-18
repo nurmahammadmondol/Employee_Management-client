@@ -46,7 +46,7 @@ const AllEmployeeList = () => {
       );
 
       // Return both user data and payment requests data
-      console.log(FilterEmployeeAndHr);
+      // console.log(FilterEmployeeAndHr);
       return {
         employees: FilterEmployeeAndHr,
         paymentRequests: paymentResponse?.data, // Assuming /Payment_Request provides data
@@ -54,10 +54,10 @@ const AllEmployeeList = () => {
     },
   });
 
-  console.log(paymentRequests, employees);
+  // console.log(paymentRequests, employees);
 
   const makeHR = employeeData => {
-    console.log('Employee Data:', employeeData); // Log the employee data
+    // console.log('Employee Data:', employeeData); // Log the employee data
     Swal.fire({
       title: 'Are you sure?',
       text: 'You are about to promote this Employee to HR. This action cannot be undone!',
@@ -67,7 +67,7 @@ const AllEmployeeList = () => {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, promote to HR',
     }).then(result => {
-      console.log('Confirmation Result:', result); // Log the Swal result
+      // console.log('Confirmation Result:', result); // Log the Swal result
       if (result.isConfirmed) {
         const UserRole = {
           ...employeeData,
@@ -76,7 +76,7 @@ const AllEmployeeList = () => {
 
         AxiosSeccur.patch(`/User/${employeeData._id}`, UserRole)
           .then(res => {
-            console.log('API Response:', res.data); // Log the response from the server
+            // console.log('API Response:', res.data); // Log the response from the server
             refetch();
             if (res.data.modifiedCount > 0) {
               Swal.fire({
@@ -125,7 +125,7 @@ const AllEmployeeList = () => {
             }
           })
           .catch(error => {
-            console.log(error);
+            // console.log(error);
           });
       }
     });
@@ -184,7 +184,7 @@ const AllEmployeeList = () => {
                 }
               })
               .catch(error => {
-                console.log(error);
+                // console.log(error);
               });
           } else {
             Swal.fire('Invalid Input', 'Salary must be a number!', 'error');

@@ -15,6 +15,7 @@ const RegistrationPage = () => {
   const { CreateUserEmailPassword, CreateUserGoogle } = useContext(AuthContext);
   const [UserRole, setUserRole] = useState(null);
 
+  // console.log(UserRole);
   const handleRegistrationFromSubmit = async e => {
     e.preventDefault();
 
@@ -54,7 +55,7 @@ const RegistrationPage = () => {
 
         if (!passwordRegex.test(Password)) {
           // এখানে .test() ব্যবহার করা হয়েছে
-          console.log(Password); // পাসওয়ার্ড শর্ত পূরণ না করলে এখানে আসবে
+          // console.log(Password); // পাসওয়ার্ড শর্ত পূরণ না করলে এখানে আসবে
 
           Swal.fire({
             icon: 'error',
@@ -64,14 +65,14 @@ const RegistrationPage = () => {
 
           return;
         } else {
-          console.log('Password is valid!'); // শর্ত পূরণ হলে এখানে আসবে
+          // console.log('Password is valid!'); // শর্ত পূরণ হলে এখানে আসবে
           // Create User with Email and Password
           CreateUserEmailPassword(Email, Password)
             .then(result => {
               // Update Profile
               updateProfile(auth.currentUser, UserProfile)
                 .then(() => {
-                  console.log(result.user);
+                  // console.log(result.user);
 
                   Swal.fire({
                     position: 'top-end',
@@ -81,7 +82,7 @@ const RegistrationPage = () => {
                     timer: 1500,
                   });
 
-                  navigate('/');
+                  // navigate('/');
                   const UserInfo = {
                     Name: result.user?.displayName,
                     Email: result.user?.email,
@@ -92,15 +93,16 @@ const RegistrationPage = () => {
 
                   PublicAxios.post('/User', UserInfo)
                     .then(res => {
-                      console.log(res.data);
+                      // console.log(res.data);
+                      // console.log(UserInfo);
                       navigate('/');
                     })
                     .catch(error => {
-                      console.log(error.message);
+                      // console.log(error.message);
                     });
                 })
                 .catch(error => {
-                  console.log('Profile Update Error:', error.message);
+                  // console.log('Profile Update Error:', error.message);
                   Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
@@ -111,7 +113,7 @@ const RegistrationPage = () => {
                 });
             })
             .catch(error => {
-              console.log('User Creation Error:', error.message);
+              // console.log('User Creation Error:', error.message);
               Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
@@ -136,12 +138,13 @@ const RegistrationPage = () => {
 
   const handleUserRole = e => {
     setUserRole(e.target.value);
+    // setUserRole(e.target.value);
   };
 
   const handleGoogleRegistration = () => {
     CreateUserGoogle()
       .then(result => {
-        console.log(result.user);
+        // console.log(result.user);
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -149,7 +152,7 @@ const RegistrationPage = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate('/');
+        // navigate('/');
 
         const UserInfo = {
           Name: result.user?.displayName,
@@ -160,10 +163,11 @@ const RegistrationPage = () => {
 
         PublicAxios.post('/User', UserInfo)
           .then(res => {
-            console.log(res.data);
+            // console.log(res.data);
+            navigate('/');
           })
           .catch(error => {
-            console.log(error.message);
+            // console.log(error.message);
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
@@ -174,7 +178,7 @@ const RegistrationPage = () => {
           });
       })
       .catch(error => {
-        console.log(error.message);
+        // console.log(error.message);
         Swal.fire({
           icon: 'error',
           title: 'Oops...',

@@ -18,7 +18,7 @@ const PrivetRootInHR = ({ children }) => {
         // If user is not HR, log them out
         LogOutUser()
           .then(() => {
-            console.log('User logged out successfully.');
+            // console.log('User logged out successfully.');
           })
           .catch(error => {
             console.error('Logout failed:', error);

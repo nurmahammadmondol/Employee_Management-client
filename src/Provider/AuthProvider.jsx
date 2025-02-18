@@ -45,7 +45,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, carrentUser => {
       setUser(carrentUser);
       setLoading(false);
-      // console.log('Your account created successfully', carrentUser);
+      // // console.log('Your account created successfully', carrentUser);
     });
 
     return () => {
@@ -56,13 +56,13 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     AxiosSecuur.get('/User')
       .then(res => {
-        // console.log(res.data);
+        // // console.log(res.data);
         setAllUser(res.data);
 
         const userData = res.data;
         const userDataFind = userData.find(data => data?.Email === User?.email);
 
-        // console.log(userDataFind);
+        // // console.log(userDataFind);
 
         if (userDataFind) {
           setUserData(userDataFind);
