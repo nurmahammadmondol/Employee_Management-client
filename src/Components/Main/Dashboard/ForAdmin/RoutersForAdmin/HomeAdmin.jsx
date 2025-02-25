@@ -207,7 +207,7 @@ const HomeAdmin = () => {
         </div>
       </div>
 
-      <div className="my-20">
+      <div className="my-10">
         <SalaryMounthly Data={Data}></SalaryMounthly>
       </div>
     </div>

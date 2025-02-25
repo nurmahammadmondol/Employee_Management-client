@@ -2,7 +2,7 @@
 
 ## 🚀 Live Site
 
-🔗 [EmpowerHub Live](https://snazzy-daffodil-c813e6.netlify.app/)
+🔗 [EmpowerHub Live](https://employee-management-system01.netlify.app/)
 
 ## 📌 Overview
 
@@ -10,10 +10,6 @@ EmpowerHub is a comprehensive employee management system designed to streamline
 workforce monitoring, salary management, and employee workflow tracking. This
 platform enables employees to log their work updates, HR executives to verify
 and process payments, and administrators to manage the workforce efficiently.
-
----
-
-![Dashboard Preview](https://raw.githubusercontent.com/your-username/repository-name/main/image.png)
 
 ---
 
@@ -110,14 +106,3 @@ and process payments, and administrators to manage the workforce efficiently.
 
 
 ```
-
----
-
-## 🏆 Contributions & Feedback
-
-Feel free to fork this repository and contribute by submitting pull requests.
-For feedback or issues, open an issue on GitHub!
-
-🚀 Built with ❤️ by Nur Mahammad Mondol Robiul
-
-> > > > > > > ef5950da063047a62e8a1394dd1b86c56605fff8
