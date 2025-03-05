@@ -37,3 +37,6 @@ nav a.active {
   font-size: 25px;
   font-weight: 800;
 }
+section a.active {
+  border: 2px solid #47b2f9;
+}

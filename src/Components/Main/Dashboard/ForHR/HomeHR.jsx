@@ -22,9 +22,9 @@ const HomeHR = () => {
   const Projects = workData.length;
   const AllEmplayee = AllUser.length;
 
-  const Emplayeepercentage = (AllEmplayee / 50) * 100;
+  const Emplayeepercentage = (AllEmplayee / 100) * 100;
   const Projectspercentage = (Projects / 50) * 100;
-  const paymentSuccesspercentage = (sumAllSalary / 5000) * 100;
+  const paymentSuccesspercentage = (sumAllSalary / 10000) * 100;
   // // console.log(paymentSuccesspercentage, sumAllSalary);
 
   useEffect(() => {
@@ -109,7 +109,7 @@ const HomeHR = () => {
           <div className="flex flex-col justify-start h-full">
             {/* Card Content */}
             <div className="flex flex-col justify-between h-full">
-              <h6 className="text-white text-2xl font-bold">New Employee</h6>
+              <h6 className="text-white text-2xl font-bold">Employees</h6>
               <div className="flex justify-between items-center">
                 <p className="text-white text-xl font-bold flex items-center gap-1">
                   <FaUsers className="text-lg" />
