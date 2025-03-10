@@ -4,6 +4,7 @@ import Statistical from '../Main/StatisticalSection/Statistical';
 import OurProcesses from '../Main/OurProcesses/OurProcesses';
 import LatestNews from '../Main/LatestNews/LatestNews';
 import OurExpertise from '../Main/OurExpertise/OurExpertise';
+import AllUsersDeshboard from '../Main/OurAllUsersDeshboard/Pages';
 
 const HomePageContain = () => {
   return (
@@ -19,6 +20,10 @@ const HomePageContain = () => {
 
       <div className="  my-20">
         <OurProcesses></OurProcesses>
+      </div>
+
+      <div className=" w-11/12 mx-auto  my-20 ">
+        <AllUsersDeshboard></AllUsersDeshboard>
       </div>
 
       <div>

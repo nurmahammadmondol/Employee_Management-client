@@ -5,16 +5,16 @@ import { AuthContext } from '../../Provider/AuthProvider';
 const Navbar = () => {
   const { User, userData, LogOutUser } = useContext(AuthContext);
   const Links = (
-    <div className="  md:text-xl font-semibold flex items-center gap-4 md:gap-7">
+    <div className="   font-semibold flex items-center gap-4 md:gap-7">
       <NavLink to="/">Home</NavLink>
 
       {!User && <Link to="/LoginPage">Dashboard </Link>}
 
       {User && userData.UserRole === 'Employee' && (
-        <NavLink to="/DashboardEmployes">Dashboard </NavLink>
+        <NavLink to="/DashboardEmployes">Dashboard</NavLink>
       )}
       {User && userData.UserRole === 'HR' && (
-        <NavLink to="/DashboardHR">Dashboard </NavLink>
+        <NavLink to="/DashboardHR">Dashboard</NavLink>
       )}
       {User && userData.UserRole === 'Admin' && (
         <NavLink to="/DashboardAdmin">Dashboard</NavLink>
@@ -26,7 +26,7 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="navbar fixed z-10 bg-black bg-opacity-50 text-white py-5">
+    <nav className="navbar fixed z-10 bg-black bg-opacity-50 text-white py-2">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

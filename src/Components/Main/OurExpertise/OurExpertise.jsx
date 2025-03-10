@@ -6,16 +6,7 @@ const OurExpertise = () => {
       <div class="max-w-7xl mx-auto text-center">
         <h2 class="text-3xl font-bold mb-4">Our Expertise</h2>
         <p class="text-lg mb-8">Complete HR Suite: Our Services Explained</p>
-        <ul class="text-left text-lg mb-12">
-          <li class="flex items-center mb-4">
-            <span class="text-blue-400 text-xl mr-2">✔</span> Continuous
-            Improvement Processes
-          </li>
-          <li class="flex items-center">
-            <span class="text-blue-400 text-xl mr-2">✔</span> HR Function
-            Efficiency Assessments
-          </li>
-        </ul>
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="bg-cyan-50 p-6 rounded-lg text-center hover:shadow-lg">
             <div class="text-blue-400 text-4xl mb-4">💼</div>

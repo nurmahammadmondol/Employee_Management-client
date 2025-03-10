@@ -186,7 +186,7 @@ const EmployeWorkSheet = () => {
 
               <button
                 type="submit"
-                className="bg-cyan-200 w-full text-white md:text-xs lg:text-lg lg:font-bold px-3 lg:px-4 py-1 rounded"
+                className="bg-cyan-300 w-full text-white md:text-xs lg:text-lg lg:font-bold px-3 lg:px-4 py-1 rounded"
               >
                 Add
               </button>
