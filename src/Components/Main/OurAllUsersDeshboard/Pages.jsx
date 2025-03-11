@@ -7,12 +7,36 @@ import { EffectCreative, Pagination, Autoplay } from 'swiper/modules';
 
 const AllUsersDeshboard = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5  gap-10">
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5  gap-10">
       {/* Admin  */}
-      <div className="col-span-3 border rounded-lg p-3">
-        <h5>Admin</h5>
+      <div className="md:col-span-2 lg:col-span-3 border rounded-lg p-3 space-y-2">
+        <h5 className="text-2xl font-bold">Admin Dashboard </h5>
+        <p className="text-gray-400">
+          The Admin Dashboard provides a centralized platform for managing
+          employees, monitoring work progress, and handling financial operations
+          efficiently. It helps streamline HR tasks, track performance, and
+          ensure smooth salary disbursement.
+        </p>
+        <ul className="text-gray-400 text-sm">
+          <li>
+            1. All Employee List: View and manage all employees, verify details,
+            and promote employees to HR.
+          </li>
+          <li>
+            2. Work Records: Track employee work history, monitor performance,
+            and evaluate productivity.
+          </li>
+          <li>
+            3. Pay Employee Salary: Approve salary payments, track pending
+            payments, and manage payroll records.
+          </li>
+          <li>
+            4. Projects & Tasks: Get an overview of ongoing projects, assigned
+            tasks, and overall progress.
+          </li>
+        </ul>
       </div>
-      <div className=" col-span-2">
+      <div className=" lg:col-span-2">
         <Swiper
           effect="creative"
           grabCursor={true}
@@ -119,7 +143,7 @@ const AllUsersDeshboard = () => {
       </div>
 
       {/* HR  */}
-      <div className=" col-span-2">
+      <div className=" lg:col-span-2">
         <Swiper
           effect="creative"
           grabCursor={true}
@@ -214,16 +238,63 @@ const AllUsersDeshboard = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-      <div className="col-span-3 border rounded-lg p-3">
-        <h5>HR</h5>
+      <div className="md:col-span-2 lg:col-span-3 border rounded-lg p-3 space-y-2">
+        <h5 className="text-2xl font-bold">HR Dashboard</h5>
+
+        <p className="text-gray-400">
+          The HR Dashboard is a powerful tool for managing employee-related
+          operations efficiently. It provides insights into employee records,
+          work progress, and payroll management.
+        </p>
+
+        <ul className="text-gray-400 text-sm">
+          <li>
+            1. Employee List: View and manage all employees with details and
+            verification options.
+          </li>
+          <li>
+            2. Task Monitoring: Oversee assigned tasks and track work
+            completion.
+          </li>
+          <li>
+            3. Work Records: Track employee attendance, performance, and task
+            progress.
+          </li>
+          <li>
+            4. Payment Requests: Approve salary payments and manage payroll
+            efficiently. Review salary expenditures, approved & pending
+            payments, and monthly reports.
+          </li>
+        </ul>
       </div>
 
       {/* Employee  */}
 
-      <div className="col-span-3 border rounded-lg p-3">
-        <h5>Employee</h5>
+      <div className="md:col-span-2 lg:col-span-3 border rounded-lg p-3 space-y-2">
+        <h5 className="text-2xl font-bold">Employee Dashboard</h5>
+        <p className="text-gray-400">
+          The Employee Dashboard provides employees with an intuitive interface
+          to track their work progress, manage tasks, and view payment history.
+        </p>
+
+        <ul className="text-gray-400 text-sm">
+          <li>
+            1. Work Sheet: View assigned tasks, deadlines, and work progress.
+          </li>
+          <li>
+            2. Task Update: Update task status, mark tasks as completed, or
+            request modifications.
+          </li>
+          <li>
+            3. Task Delete: Remove unnecessary or completed tasks from the list.
+          </li>
+          <li>
+            4. Payment History: Track salary payments, view transaction details,
+            and check pending payments.
+          </li>
+        </ul>
       </div>
-      <div className=" col-span-2">
+      <div className=" lg:col-span-2">
         <Swiper
           effect="creative"
           grabCursor={true}
