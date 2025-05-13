@@ -22,6 +22,7 @@ import AboutUs from '../Components/About/AboutUs';
 import PrivetRootInHR from '../PrivetRoot/PrivetRootInHR';
 import PrivetRootInAdmin from '../PrivetRoot/PrivetRootInAdmin';
 import HomeAdmin from '../Components/Main/Dashboard/ForAdmin/RoutersForAdmin/HomeAdmin';
+import AttendanceTracker from '../Components/Main/Dashboard/ForAdmin/AttendanceTracker';
 
 const Router = createBrowserRouter([
   {
@@ -149,6 +150,18 @@ const Router = createBrowserRouter([
             loader: () =>
               fetch(
                 'https://employee-management-server-two-eight.vercel.app/WorkSheet'
+              ),
+          },
+          {
+            path: 'AttendanceTracker',
+            element: (
+              <PrivetRootInAdmin>
+                <AttendanceTracker></AttendanceTracker>
+              </PrivetRootInAdmin>
+            ),
+            loader: () =>
+              fetch(
+                'https://employee-management-server-two-eight.vercel.app/User'
               ),
           },
           {

@@ -30,6 +30,13 @@ const RouterForAdmin = () => {
               </button>
             </NavLink>
 
+            <NavLink to="/DashboardAdmin/AttendanceTracker">
+              <button className="btn rounded-none w-full text-cyan-500   flex items-center gap-2 text-sm">
+                <i class="fa-solid fa-clipboard-user text-base"></i>Attendance
+                Tracker
+              </button>
+            </NavLink>
+
             <NavLink to="/DashboardAdmin/PayEmployeesSalary">
               <button className="btn rounded-none w-full text-cyan-500   flex items-center gap-2 text-xs">
                 <i class="fa-solid fa-money-check-dollar"></i>Pay Employees
