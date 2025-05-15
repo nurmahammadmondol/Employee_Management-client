@@ -28,8 +28,8 @@ const AttendanceTracker = () => {
       <div className="overflow-x-auto  mt-10 border ">
         <table className="table">
           {/* head */}
-          <thead className="bg-gray-200 border-gray-300">
-            <tr className="text-center  text-base font-bold text-cyan-700">
+          <thead className="bg-gray-100 border-gray-200">
+            <tr className="text-center  text-base font-bold ">
               <th>Serial</th>
               <th>Name</th>
               <th>Login Time</th>

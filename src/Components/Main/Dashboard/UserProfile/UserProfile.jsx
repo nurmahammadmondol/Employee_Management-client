@@ -64,7 +64,7 @@ const UserProfile = ({ userData }) => {
       </div>
 
       {/* Radial Bar Chart */}
-      <div className="flex flex-col items-center ">
+      <div className="hidden lg:flex flex-col items-center ">
         <RadialBarChart
           width={400}
           height={200}

@@ -72,21 +72,19 @@ const HomeAdmin = () => {
         <UserProfile userData={userData}></UserProfile>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
-        <div className="relative border h-40 w-full p-4 flex flex-col justify-between bg-gradient-to-r from-[#1e90ff] via-[#00bfff] to-[#4682b4] rounded-md">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 my-16">
+        <div className="relative border h-40 w-full p-4 flex flex-col justify-between bg-gray-50 text-black rounded-md">
           {/* Card Content and Progress Bar */}
           <div className="flex flex-col justify-start h-full">
             {/* Card Content */}
             <div className="flex flex-col justify-between h-full">
-              <h6 className="text-white text-2xl font-bold">Projects</h6>
+              <h6 className=" text-2xl font-bold">Projects</h6>
               <div className="flex justify-between items-center">
-                <p className="text-white text-xl font-bold flex items-center gap-1">
+                <p className=" text-xl font-bold flex items-center gap-1">
                   <FaListCheck className="text-xs" />
                   {Projects}
                 </p>
-                <small className="text-white">
-                  {Projectspercentage.toFixed(2)}%
-                </small>
+                <small className="">{Projectspercentage.toFixed(2)}%</small>
               </div>
             </div>
 
@@ -102,25 +100,23 @@ const HomeAdmin = () => {
           </div>
 
           {/* Icon as Background */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-20">
-            <FaListCheck className="text-7xl" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  opacity-20">
+            <FaListCheck className="text-6xl" />
           </div>
         </div>
 
-        <div className="relative border h-40 w-full p-4 flex flex-col justify-between bg-gradient-to-r from-[#ff7f50] via-[#ff6347] to-[#ff4500] rounded-md">
+        <div className="relative border h-40 w-full p-4 flex flex-col justify-between  rounded-md">
           {/* Card Content and Progress Bar */}
           <div className="flex flex-col justify-start h-full">
             {/* Card Content */}
             <div className="flex flex-col justify-between h-full">
-              <h6 className="text-white text-2xl font-bold">New Employee</h6>
+              <h6 className=" text-2xl font-bold">New Employee</h6>
               <div className="flex justify-between items-center">
-                <p className="text-white text-xl font-bold flex items-center gap-1">
+                <p className=" text-xl font-bold flex items-center gap-1">
                   <FaUsers className="text-lg" />
                   {AllEmplayee}
                 </p>
-                <small className="text-white">
-                  {Emplayeepercentage.toFixed(2)}%
-                </small>
+                <small className="">{Emplayeepercentage.toFixed(2)}%</small>
               </div>
             </div>
 
@@ -136,22 +132,22 @@ const HomeAdmin = () => {
           </div>
 
           {/* Icon as Background */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-20">
-            <FaUsers className="text-7xl" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  opacity-20">
+            <FaUsers className="text-6xl" />
           </div>
         </div>
 
-        <div className="relative border h-40 w-full p-4 flex flex-col justify-between bg-gradient-to-r from-[#4caf50] via-[#388e3c] to-[#6aa84f] rounded-md">
+        <div className="relative border h-40 w-full p-4 flex flex-col justify-between  rounded-md">
           {/* Card Content and Progress Bar */}
           <div className="flex flex-col justify-start h-full">
             {/* Card Content */}
             <div className="flex flex-col justify-between h-full">
-              <h6 className="text-white text-2xl font-bold">Running Tasks</h6>
+              <h6 className=" text-2xl font-bold">Running Tasks</h6>
               <div className="flex justify-between items-center">
-                <p className="text-white text-xl font-bold flex items-center gap-1">
-                  <GrTasks className="text-sm text-white" />7
+                <p className=" text-xl font-bold flex items-center gap-1">
+                  <GrTasks className="text-sm " />7
                 </p>
-                <small className="text-white">{percentage.toFixed(2)}%</small>
+                <small className="">{percentage.toFixed(2)}%</small>
               </div>
             </div>
 
@@ -167,23 +163,23 @@ const HomeAdmin = () => {
           </div>
 
           {/* Icon as Background */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-20">
-            <GrTasks className="text-7xl" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  opacity-20">
+            <GrTasks className="text-6xl" />
           </div>
         </div>
 
-        <div className="relative border h-40 w-full p-4 flex flex-col justify-between bg-gradient-to-r from-[#A64D79] via-[#D81B60] to-[#8E3B46] rounded-md">
+        <div className="relative border h-40 w-full p-4 flex flex-col justify-between  rounded-md">
           {/* Card Content and Progress Bar */}
           <div className="flex flex-col justify-start h-full">
             {/* Card Content */}
             <div className="flex flex-col justify-between h-full">
-              <h6 className="text-white text-2xl font-bold">Salary</h6>
+              <h6 className="text-2xl font-bold">Salary</h6>
               <div className="flex justify-between items-center">
-                <p className="text-white text-xl font-bold flex items-center gap-1">
+                <p className=" text-xl font-bold flex items-center gap-1">
                   <FaMoneyCheckDollar className="text-lg" />
                   {sumAllSalary}
                 </p>
-                <small className="text-white">
+                <small className="">
                   {paymentSuccesspercentage.toFixed(2)}%
                 </small>
               </div>
@@ -201,8 +197,8 @@ const HomeAdmin = () => {
           </div>
 
           {/* Icon as Background */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white opacity-20">
-            <FaMoneyCheckDollar className="text-7xl" />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  opacity-20">
+            <FaMoneyCheckDollar className="text-6xl" />
           </div>
         </div>
       </div>

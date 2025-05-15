@@ -44,7 +44,7 @@ const TableJustEmployees = ({ EmployeeData, fireEmployee, adjustSalary }) => {
 
               <td className="border border-gray-300 px-4 py-2 text-center">
                 <button
-                  className={`bg-green-400 text-white px-3 py-1 rounded   ${
+                  className={`bg-[#22d3ee] text-white px-3 py-1 rounded   ${
                     employee.dismiss &&
                     'opacity-50 bg-red-300 pointer-events-none cursor-not-allowed'
                   }`}

@@ -32,13 +32,13 @@
 }
 
 nav a.active {
-  color: #47b2f9;
-  border-bottom: 2px solid #47b2f9;
+  color: #22d3ee;
+  border-bottom: 2px solid #22d3ee;
   font-size: 15px;
   font-weight: 800;
 }
 section a.active {
-  border: 2px solid #47b2f9;
+  border: 2px solid #22d3ee;
 }
 
 .mySwiper {

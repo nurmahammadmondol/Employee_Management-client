@@ -4,13 +4,11 @@ import Logo from '../../../../../assets/Photo/EmpowerHubLogo.png';
 const RouterForAdmin = () => {
   return (
     <section>
-      <div className="py-8 bg-cyan-100"></div>
-      <div className="md:flex gap-4 md:gap-10 ">
+      <div className="py-8 lg:py-10 bg-cyan-100"></div>
+      <div className="md:flex gap-5 lg:10">
         <div className="w-full md:w-2/12 bg-cyan-200 p-7 md:p-4 md:min-h-screen">
           <div className="flex flex-col gap-3 text-cyan-400 ">
-            <div>
-              <img className="w-full" src={Logo} alt="" />
-            </div>
+            <div>{/* <img className="w-full" src={Logo} alt="" /> */}</div>
 
             <NavLink to="/DashboardAdmin/HomeAdmin">
               <button className="btn rounded-none w-full text-cyan-500  flex items-center gap-1">

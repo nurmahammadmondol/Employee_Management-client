@@ -157,7 +157,7 @@ const AllEmployeeList = () => {
         inputPlaceholder: 'Enter new salary',
         inputAttributes: { min: '0' },
         showCancelButton: true,
-        confirmButtonColor: '#89CFF0',
+        confirmButtonColor: '#22d3ee',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Update Salary',
         cancelButtonText: 'Cancel',

@@ -2,8 +2,11 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 
+import Logo from '../../assets/Photo/EmpowerHubLogo.png';
+
 const Navbar = () => {
   const { User, userData, LogOutUser } = useContext(AuthContext);
+
   const Links = (
     <div className="   font-semibold flex items-center gap-4 md:gap-7">
       <NavLink to="/">Home</NavLink>
@@ -52,11 +55,8 @@ const Navbar = () => {
             {Links}
           </ul>
         </div>
-        <a
-          href="/"
-          className="btn btn-ghost text-2xl md:text-4xl rubik-wet-paint-regular-font text-cyan-300 font-extrabold"
-        >
-          EmpowerHub
+        <a href="/" className="">
+          <img className="w-24 md:w-36 lg:w-48" src={Logo} alt="" />
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">

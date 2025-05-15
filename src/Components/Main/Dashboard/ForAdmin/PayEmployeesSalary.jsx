@@ -109,7 +109,7 @@ const PayEmployeesSalary = () => {
         <table className="table border">
           {/* head */}
           <thead>
-            <tr className="bg-gray-200 text-base text-cyan-600 font-bold text-center">
+            <tr className="bg-gray-100 text-base text-[#22d3ee] font-semibold text-center">
               <th>Serial No</th>
               <th>
                 <i class="fa-solid fa-user mr-1"></i>Employee Name
@@ -165,7 +165,7 @@ const PayEmployeesSalary = () => {
                     // Pending হলে Pay বাটন দেখাবে
                     <button
                       onClick={() => handlePay(item?._id, item)}
-                      className="btn w-full btn-sm btn-outline text-cyan-600"
+                      className="btn w-full btn-sm btn-outline text-[#22d3ee]"
                     >
                       $ Pay
                     </button>
