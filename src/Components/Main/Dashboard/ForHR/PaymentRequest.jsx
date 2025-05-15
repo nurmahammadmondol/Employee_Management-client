@@ -20,8 +20,8 @@ const PaymentRequest = () => {
         <div className="w-full h-[500px] overflow-x-auto overflow-y-auto">
           <table className="table border">
             {/* head */}
-            <thead className="bg-gray-200 border-gray-300 ">
-              <tr className="text-center text-base font-bold text-cyan-700">
+            <thead className="bg-gray-100 border-gray-200 ">
+              <tr className="text-center text-base font-bold text-[#22d3ee]">
                 <th>Serial No</th>
                 <th>Name</th>
                 <th>Date</th>

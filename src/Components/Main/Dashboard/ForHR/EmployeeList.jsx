@@ -167,7 +167,7 @@ const EmployeeList = () => {
               AllUser.some(user => user.dismiss && user._id === row.original.id)
                 ? 'opacity-50 bg-red-300 pointer-events-none cursor-not-allowed'
                 : row.original.isVerified
-                ? 'bg-green-500 text-white'
+                ? 'bg-[#22d3ee] text-white'
                 : 'bg-gray-300 text-gray-600'
             }`}
             disabled={
