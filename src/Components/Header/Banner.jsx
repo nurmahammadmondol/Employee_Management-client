@@ -52,17 +52,30 @@ const slides = [
 
 const Banner = () => {
   const navigate = useNavigate();
-  const { User } = useContext(AuthContext);
-  console.log(User);
+  const { User, AllUser } = useContext(AuthContext);
+
+  // Protect against undefined/null
+  const userRoleChecked =
+    User && AllUser?.length > 0
+      ? AllUser.find(checkUser => checkUser.Email === User.email)
+      : null;
 
   const handleNavigate = () => {
-    navigate('/Dashboard'); // Replace with your actual route
+    if (userRoleChecked?.UserRole === 'Admin') {
+      navigate('/DashboardAdmin');
+    } else if (userRoleChecked?.UserRole === 'HR') {
+      navigate('/DashboardHR');
+    } else if (userRoleChecked?.UserRole === 'Employee') {
+      navigate('/DashboardEmployes');
+    } else {
+      navigate('/LoginPage');
+    }
   };
 
   return (
     <Carousel
       autoPlay
-      interval={2000} // 2 second interval
+      interval={2000}
       infiniteLoop
       showThumbs={false}
       showStatus={false}
@@ -70,14 +83,12 @@ const Banner = () => {
     >
       {slides.map((slide, index) => (
         <div key={index} className="relative h-[400px] md:h-[700px] w-full">
-          {/* Background Image */}
           <img
             src={slide.image}
             className="h-full w-full object-cover"
             alt={slide.title}
           />
 
-          {/* Overlay */}
           <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center px-4">
             <h2 className="text-white text-2xl md:text-5xl font-bold mb-4 drop-shadow-lg">
               {slide.title}
@@ -87,7 +98,7 @@ const Banner = () => {
             </p>
             <button
               onClick={handleNavigate}
-              className="mt-2 px-6 py-2 bg-[#22d3ee]  text-white rounded hover:bg-[#1EBDD6] transition duration-300"
+              className="mt-2 px-6 py-2 bg-[#22d3ee] text-white rounded hover:bg-[#1EBDD6] transition duration-300"
             >
               Go to Dashboard
             </button>
