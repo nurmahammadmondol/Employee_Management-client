@@ -5,12 +5,18 @@ import OurProcesses from '../Main/OurProcesses/OurProcesses';
 import LatestNews from '../Main/LatestNews/LatestNews';
 import OurExpertise from '../Main/OurExpertise/OurExpertise';
 import AllUsersDeshboard from '../Main/OurAllUsersDeshboard/Pages';
+import CompanyLogos from '../Main/BrandSection/CompanyLogos';
 
 const HomePageContain = () => {
   return (
     <div>
       <Banner></Banner>
-      <div className=" w-11/12 mx-auto my-20">
+
+      <div className=" w-11/12 mx-auto mt-10">
+        <CompanyLogos></CompanyLogos>
+      </div>
+
+      <div className=" w-11/12 mx-auto my-10">
         <Statistical></Statistical>
       </div>
 

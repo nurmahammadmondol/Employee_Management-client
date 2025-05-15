@@ -62,12 +62,12 @@ const SalaryMonthly = ({ Data }) => {
           <Tooltip />
           <Legend />
           {/* Bar Chart */}
-          <Bar dataKey="salary" fill="#82ca9d" barSize={40} name="Salary Bar" />
+          <Bar dataKey="salary" fill="#a5f3fc" barSize={40} name="Salary Bar" />
           {/* Line Chart */}
           <Line
             type="monotone"
             dataKey="salary"
-            stroke="#8884d8"
+            stroke="#22d3ee"
             strokeWidth={2}
             name="Salary Line"
           />
