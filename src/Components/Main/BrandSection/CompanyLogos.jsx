@@ -39,7 +39,7 @@ const CompanyLogos = () => {
 
   return (
     <section className="py-6 bg-white overflow-hidden">
-      <Marquee pauseOnHover={true} speed={40} gradient={false}>
+      <Marquee pauseOnHover={true} speed={20} gradient={false}>
         {logos.map((logo, index) => (
           <div
             key={index}

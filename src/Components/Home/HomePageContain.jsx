@@ -20,17 +20,17 @@ const HomePageContain = () => {
         <Statistical></Statistical>
       </div>
 
-      <div className=" w-11/12 mx-auto my-20 ">
+      <div className=" w-11/12 mx-auto my-10 ">
         <LatestNews></LatestNews>
       </div>
 
-      <div className="  my-20">
+      <div className="  my-10">
         <OurProcesses></OurProcesses>
       </div>
 
-      <div className=" w-11/12 mx-auto  my-20 ">
+      {/* <div className=" w-11/12 mx-auto  my-20 ">
         <AllUsersDeshboard></AllUsersDeshboard>
-      </div>
+      </div> */}
 
       <div>
         <OurExpertise></OurExpertise>
