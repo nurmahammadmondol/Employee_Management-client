@@ -42,7 +42,7 @@ const EmployeePaymentHistory = () => {
           <table className="table">
             {/* head */}
             <thead>
-              <tr className="bg-gray-200 text-cyan-700  text-center text-base font-bold">
+              <tr className="bg-gray-200 text-[#22d3ee]  text-center text-base font-bold">
                 <th>Serial No</th>
                 <th>Date</th>
                 <th>Amount</th>

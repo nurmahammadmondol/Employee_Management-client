@@ -11,18 +11,15 @@ const RoutesForEmployees = () => {
   const { User } = useContext(AuthContext);
 
   return (
-    <div className="py-20 md:py-32 w-11/12 mx-auto">
+    <div className="py-20 md:py-28 w-11/12 mx-auto">
       <Helmet>
         <title>EmpowerHub || Employee Home</title>
       </Helmet>
-      <div className="my-5 text-xl md:text-2xl   font-bold lobster-regular-font flex gap-3">
-        <div className="w-36 ">
-          <img className="w-full h-full" src={Logo} alt="" />
-        </div>
+      <div className="my-5 text-xl md:text-2xl   font-bold lobster-regular-font ">
         <div>
           {User ? (
             <h4>
-              <span className="text-cyan-600">{User?.displayName},</span>{' '}
+              <span className="text-[#22d3ee]">{User?.displayName},</span>{' '}
               welcome back are you ready for the next task ?
             </h4>
           ) : (
